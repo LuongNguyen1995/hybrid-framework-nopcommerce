@@ -14,8 +14,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.HomePageObject;
-import pageObject.RegisterPageObject;
+import pageObjects.nopCommerce.HomePageObject;
+import pageObjects.nopCommerce.RegisterPageObject;
 
 public class Level_04_Multiple_Browser extends BaseTest {
 	private String firstName, lastName, emailAddress, password;

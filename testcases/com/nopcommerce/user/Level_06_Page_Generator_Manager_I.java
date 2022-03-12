@@ -12,11 +12,12 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
+import commons.BaseTest;
 import pageObjects.nopCommerce.HomePageObject;
 import pageObjects.nopCommerce.LoginPageObject;
 import pageObjects.nopCommerce.RegisterPageObject;
 
-public class Level_03_Page_Object_02_Login {
+public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	private WebDriver driver;
 	private String firstName, lastName, existingEmail,invalidEmail,notFoundEmail, validPassword,invalidPassword;
 	private String projectPath = System.getProperty("user.dir");
@@ -26,13 +27,10 @@ public class Level_03_Page_Object_02_Login {
 	private LoginPageObject loginPage;
 	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-	
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get("https://demo.nopcommerce.com/");
-		homePage = new HomePageObject(driver);
+	public void beforeClass(String browserName) {
+		System.out.println("Run on "+browserName);
+		driver = getBrowserDriver(browserName);
+		
 		firstName = "Automation";
 		lastName = "FC";
 		existingEmail = "afc" + generateFakeNumber() + "@mail.vn";
@@ -40,9 +38,12 @@ public class Level_03_Page_Object_02_Login {
 		notFoundEmail = "afc" + generateFakeNumber() + "@mail.com";
 		validPassword = "123456";
 		invalidPassword = "654321";
-		
+
+		//1
+		homePage = new HomePageObject(driver);
 		System.out.println("Pre-condition - Step 01 : Click to Register link");
 		homePage.clickToRegisterLink();
+		//2
 		registerPage = new RegisterPageObject(driver);
 		
 		System.out.println("Pre-condition - Step 02 : Input to require fields");
@@ -62,6 +63,7 @@ public class Level_03_Page_Object_02_Login {
 		registerPage.clickToLogoutLink();
 		
 		//Click log out thì business sẽ quay về trang home
+		//3
 		homePage = new HomePageObject(driver);
 	}
 	
@@ -71,6 +73,7 @@ public class Level_03_Page_Object_02_Login {
 		homePage.clickToLoginLink();
 		
 		//Home - Click to Login link -> Go to Login Page (Khởi tạo trang Login lên) 
+		//4
 		loginPage = new LoginPageObject(driver);
 		System.out.println("Login_01 - Step 02 : Click to Login Button");
 		loginPage.clickToLoginButton();
@@ -84,6 +87,7 @@ public class Level_03_Page_Object_02_Login {
 	public void Login_02_Invalid_Email() {
 		System.out.println("Login_02 - Step 01 : Click to Login link");
 		homePage.clickToLoginLink();
+		//5
 		loginPage = new LoginPageObject(driver);
 		loginPage.inputToEmailTextbox(invalidEmail);
 		
@@ -98,6 +102,7 @@ public class Level_03_Page_Object_02_Login {
 	public void Login_03_Email_Not_Found() {
 		System.out.println("Login_03 - Step 01 : Click to Login link");
 		homePage.clickToLoginLink();
+		//6
 		loginPage = new LoginPageObject(driver);
 		loginPage.inputToEmailTextbox(notFoundEmail);
 		
@@ -113,6 +118,7 @@ public class Level_03_Page_Object_02_Login {
 	public void Login_04_Existing_Email_Empty_Password() {
 		System.out.println("Login_04 - Step 01 : Click to Login link");
 		homePage.clickToLoginLink();
+		//7
 		loginPage = new LoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		
@@ -128,6 +134,7 @@ public class Level_03_Page_Object_02_Login {
 	public void Login_05_Existing_Email_Incorrect_Password() {
 		System.out.println("Login_05 - Step 01 : Click to Login link");
 		homePage.clickToLoginLink();
+		//8
 		loginPage = new LoginPageObject(driver);
 		System.out.println("Login_05 - Step 02 : Input to require fields");
 		loginPage.inputToEmailTextbox(existingEmail);
@@ -145,6 +152,7 @@ public class Level_03_Page_Object_02_Login {
 	public void Login_06_Valid_Email_Password() {
 		System.out.println("Login_06 - Step 01 : Click to Login link");
 		homePage.clickToLoginLink();
+		//9
 		loginPage = new LoginPageObject(driver);
 		System.out.println("Login_06 - Step 02 : Input to require fields");
 		loginPage.inputToEmailTextbox(existingEmail);
@@ -154,6 +162,7 @@ public class Level_03_Page_Object_02_Login {
 		loginPage.clickToLoginButton();
 		
 		//Login successful -> Go to HomePage
+		//10
 		homePage = new HomePageObject(driver);
 		System.out.println("Login_06 - Step 04 : Verify error message displayed");
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
@@ -165,10 +174,6 @@ public class Level_03_Page_Object_02_Login {
 	public void afterClass() {
 		driver.quit();
 	}
-	
-	public int generateFakeNumber() {
-		Random rand = new Random();
-		return rand.nextInt(9999);
-	}
+
 
 }

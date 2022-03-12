@@ -1,4 +1,4 @@
-package pageFactory;
+package pageFactory.copCommerce;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
