@@ -19,7 +19,7 @@ public class LoginPageObject extends BasePage {
 	}
 
 	public String getErrorMessageAtEmailTextbox() {
-		waitForAllElementVisible(driver, LoginPageUI.EMAIL_ERROR_MESSAGE);
+		waitForElementVisible(driver, LoginPageUI.EMAIL_ERROR_MESSAGE);
 		return getElementText(driver, LoginPageUI.EMAIL_ERROR_MESSAGE);
 	}
 
