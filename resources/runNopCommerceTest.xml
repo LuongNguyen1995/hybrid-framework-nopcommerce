@@ -4,23 +4,23 @@
 	<test name="Run on firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.user.Level_06_Page_Generator_Manager_III" />
+			<class name="com.nopcommerce.user.Level_08_Switch_Role" />
 		</classes>
 	</test>
 
-<!-- 	<test name="Run on Chrome"> -->
-<!-- 		<parameter name="browser" value="chrome" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="com.nopcommerce.user.Level_04_Multiple_Browser" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="Run on Chrome">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.nopcommerce.user.Level_08_Switch_Role" />
+		</classes>
+	</test>
 
-<!-- 	<test name="Run on Coccoc"> -->
-<!-- 		<parameter name="browser" value="coccoc" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="com.nopcommerce.user.Level_04_Multiple_Browser" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="Run on Coccoc">
+		<parameter name="browser" value="coccoc" />
+		<classes>
+			<class name="com.nopcommerce.user.Level_08_Switch_Role" />
+		</classes>
+	</test>
 
 <!-- 	<test name="Run on Edge"> -->
 <!-- 		<parameter name="browser" value="edge" /> -->

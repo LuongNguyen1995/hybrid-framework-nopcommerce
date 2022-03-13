@@ -14,15 +14,15 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Level_04_Multiple_Browser extends BaseTest {
 	private String firstName, lastName, emailAddress, password;
 	private WebDriver driver;
 	
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -30,8 +30,8 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		System.out.println("Run on "+browserName);
 		driver = getBrowserDriver(browserName);
 		
-		homePage = new HomePageObject(driver);
-		registerPage = new RegisterPageObject(driver);
+		homePage = new UserHomePageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 		firstName = "Automation";
 		lastName = "FC";
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
@@ -42,7 +42,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	public void Register_01_Empty_Data() { 
 		
 		System.out.println("Register_01 - Step 01 : Click to Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterPage();
 		System.out.println("Register_01 - Step 02 : Click to Register button");
 		registerPage.clickToRegisterButton();
 		
@@ -59,7 +59,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	public void Register_02_Invalid_Email() {
 		
 		System.out.println("Register_02 - Step 01 : Click to Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterPage();
 		
 		System.out.println("Register_02 - Step 02 : Input to require fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -79,7 +79,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	public void Register_03_Success() {
 		
 		System.out.println("Register_03 - Step 01 : Click to Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterPage();
 		
 		System.out.println("Register_03 - Step 02 : Input to require fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -101,7 +101,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	@Test
 	public void Register_04_Existing_Email() {
 		System.out.println("Register_04 - Step 01 : Click to Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterPage();
 		
 		System.out.println("Register_04 - Step 02 : Input to require fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -120,7 +120,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	@Test
 	public void Register_05_Password_Less_Than_6_Chars() {
 		System.out.println("Register_05 - Step 01 : Click to Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterPage();
 		
 		System.out.println("Register_05 - Step 02 : Input to require fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -140,7 +140,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	@Test
 	public void Register_06_Invalid_Confirm_Password() {
 		System.out.println("Register_06 - Step 01 : Click to Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterPage();
 		
 		System.out.println("Register_06 - Step 02 : Input to require fields");
 		registerPage.inputToFirstnameTextbox(firstName);
