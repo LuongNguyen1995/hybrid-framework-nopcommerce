@@ -104,10 +104,26 @@ public class Level_09_Dynamic_Locator extends BaseTest{
 	}
 	
 	@Test
-	public void User_05_Switch_Role() {
-		//Role User -> Role admin
+	public void User_03_Dynamic_Page_02() {
+		//Customer Infor -> My product review
+		customerInforPage.openPageAtMyAccountByPageName(driver, "My product reviews");
+		myProductReviewPage = PageGeneratorManager.getUserMyProductReviewPage(driver);
+		//My product review -> Reward Point
+		myProductReviewPage.openPageAtMyAccountByPageName(driver, "Reward points");
+		rewardPointPage = PageGeneratorManager.getUserRewardPointPage(driver);
+		//Reward Point -> Address
+		rewardPointPage.openPageAtMyAccountByPageName(driver, "Addresses");
+		addressPage = PageGeneratorManager.getUserAddressPage(driver);
+		//Address -> Reward Point
+		addressPage.openPageAtMyAccountByPageName(driver, "Reward points");
+		rewardPointPage = PageGeneratorManager.getUserRewardPointPage(driver);
+		//Reward point -> My product review
+		rewardPointPage.openPageAtMyAccountByPageName(driver, "My product reviews");
+		myProductReviewPage = PageGeneratorManager.getUserMyProductReviewPage(driver);
+		// My product review -> Customer Infor
+		myProductReviewPage.openPageAtMyAccountByPageName(driver, "Customer info");
+		customerInforPage =PageGeneratorManager.getUserCustomerInforPage(driver);
 		
-		//Role Admin -> Role User
 	}
 	
 	

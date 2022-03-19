@@ -25,8 +25,7 @@ import pageUIs.nopCommerce.user.BasePageUI;
 
 public class BasePage {
 	
-	private long longTimeout = 30;
-	private long shortTimeout = 5;
+	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	
 	public static BasePage getBasePageObject() {
 		return new BasePage();
@@ -138,9 +137,12 @@ public class BasePage {
 	//Nếu như truyền vào locator type là xpath = đúng
 	//Truyền vào locator Type # xpath = sai
 	private String getDynamicXpath(String locatorType, String... dynamicValue) {
+		System.out.println("Locator type before = " + locatorType);
 		if(locatorType.startsWith("xpath=")  || locatorType.startsWith("XPATH=") || locatorType.startsWith("Xpath=") || locatorType.startsWith("XPath=")) {
 			locatorType = String.format(locatorType, (Object[]) dynamicValue);
 		}
+		System.out.println("Values map to locator = " + dynamicValue);
+		System.out.println("Locator type after = " + locatorType);
 		return locatorType;
 	}
 	
@@ -468,10 +470,15 @@ public class BasePage {
 			return PageGeneratorManager.getUserMyProductReviewPage(driver);
 		case "Reward points":
 			return PageGeneratorManager.getUserRewardPointPage(driver);
-
+			
 		default:
 			throw new RuntimeException("Invalid page name at My Account area.");
 		}
+	}
+	
+	public void openPageAtMyAccountByPageName(WebDriver driver, String pageName) {
+		waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		clickToElement(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
 	}
 	
 	//Level_08_Switch_Role
