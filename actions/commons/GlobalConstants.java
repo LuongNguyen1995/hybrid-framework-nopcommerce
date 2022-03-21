@@ -27,5 +27,6 @@ public class GlobalConstants {
 	public static final long LONG_TIMEOUT = 30;
 	public static final long RETRY_TEST_FAIL = 3;
 	
-	
+	public static final String PORTAL_PAGE_LIVETECHPANDA_URL = "http://live.techpanda.org/";
+	public static final String ADMIN_PAGE_LIVETECHPANDA_URL = "http://live.techpanda.org/index.php/backendlogin/customer/";
 }
