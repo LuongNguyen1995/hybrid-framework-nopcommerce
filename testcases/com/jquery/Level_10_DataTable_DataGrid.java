@@ -1,4 +1,4 @@
-package com.jquery.datatable;
+package com.jquery;
 
 
 import java.util.List;
@@ -11,8 +11,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.jQuery.HomePageObject;
-import pageObject.jQuery.PageGeneratorManager;
+import pageObject.jQuery.dataTable.HomePageObject;
+import pageObject.jQuery.dataTable.PageGeneratorManager;
 
 public class Level_10_DataTable_DataGrid extends BaseTest{
 	private WebDriver driver;
