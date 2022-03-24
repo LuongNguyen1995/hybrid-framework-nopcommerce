@@ -125,3 +125,70 @@
 [2022-03-24 09:07:17,806] Login - Step 06: Navigate to 'My Account' page
 [2022-03-24 09:07:18,434] Login - Step 07: Verify 'Customer Infor' page
 [2022-03-24 09:07:18,518]  -------------------------- FAILED -------------------------- 
+[2022-03-24 11:35:20,833] Register - Step 01: Navigate to 'Register' Page
+[2022-03-24 11:35:21,535] Register - Step 02: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-24 11:35:21,737] Register - Step 03: Enter to Lastname Textbox with value is 'FC'
+[2022-03-24 11:35:21,914] Register - Step 04: Enter to Email Address Textbox with value is 'afc6425@mail.vn'
+[2022-03-24 11:35:22,113] Register - Step 05: Enter to Password Textbox with value is '123456'
+[2022-03-24 11:35:22,299] Register - Step 06: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-24 11:35:22,474] Register - Step 07: Click to Register Button
+[2022-03-24 11:35:23,509] Register - Step 08: Verify Register success message is displayed
+[2022-03-24 11:35:23,583]  -------------------------- FAILED -------------------------- 
+[2022-03-24 11:35:23,584] Register - Step 09: Click to Log out link
+[2022-03-24 11:35:24,765] Login - Step 01: Navigate to Login Page
+[2022-03-24 11:35:25,420] Login - Step 02: Enter to Email Address Textbox with value is 'afc6425@mail.vn'
+[2022-03-24 11:35:25,602] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-24 11:35:25,759] Login - Step 04: Click to Login Button
+[2022-03-24 11:35:26,667] Login - Step 05: Verify 'My Account' link is displayed
+[2022-03-24 11:35:26,752]  -------------------------- FAILED -------------------------- 
+[2022-03-24 11:35:26,753] Login - Step 06: Navigate to 'My Account' page
+[2022-03-24 11:35:27,391] Login - Step 07: Verify 'Customer Infor' page
+[2022-03-24 11:35:27,473]  -------------------------- FAILED -------------------------- 
+[2022-03-24 11:46:43,019] Register - Step 01: Navigate to 'Register' Page
+[2022-03-24 11:46:43,734] Register - Step 02: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-24 11:46:43,947] Register - Step 03: Enter to Lastname Textbox with value is 'FC'
+[2022-03-24 11:46:44,120] Register - Step 04: Enter to Email Address Textbox with value is 'afc2293@mail.vn'
+[2022-03-24 11:46:44,311] Register - Step 05: Enter to Password Textbox with value is '123456'
+[2022-03-24 11:46:44,489] Register - Step 06: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-24 11:46:44,660] Register - Step 07: Click to Register Button
+[2022-03-24 11:46:45,646] Register - Step 08: Verify Register success message is displayed
+[2022-03-24 11:46:45,891] Login - Step 01: Navigate to Login Page
+[2022-03-24 12:11:12,964] Register - Step 01: Navigate to 'Register' Page
+[2022-03-24 12:11:13,661] Register - Step 02: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-24 12:11:13,882] Register - Step 03: Enter to Lastname Textbox with value is 'FC'
+[2022-03-24 12:11:14,072] Register - Step 04: Enter to Email Address Textbox with value is 'afc414@mail.vn'
+[2022-03-24 12:11:14,289] Register - Step 05: Enter to Password Textbox with value is '123456'
+[2022-03-24 12:11:14,465] Register - Step 06: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-24 12:11:14,651] Register - Step 07: Click to Register Button
+[2022-03-24 12:11:15,579] Register - Step 08: Verify Register success message is displayed
+[2022-03-24 12:11:15,789] Login - Step 01: Navigate to Login Page
+[2022-03-24 12:11:19,958] Login - Step 02: Enter to Email Address Textbox with value is 'afc414@mail.vn'
+[2022-03-24 12:11:20,122] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-24 12:11:20,288] Login - Step 04: Click to Login Button
+[2022-03-24 12:11:21,193] Login - Step 05: Verify 'My Account' link is displayed
+[2022-03-24 12:14:02,016] Register - Step 01: Navigate to 'Register' Page
+[2022-03-24 12:14:02,711] Register - Step 02: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-24 12:14:02,925] Register - Step 03: Enter to Lastname Textbox with value is 'FC'
+[2022-03-24 12:14:03,100] Register - Step 04: Enter to Email Address Textbox with value is 'afc3227@mail.vn'
+[2022-03-24 12:14:03,296] Register - Step 05: Enter to Password Textbox with value is '123456'
+[2022-03-24 12:14:03,485] Register - Step 06: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-24 12:14:03,673] Register - Step 07: Click to Register Button
+[2022-03-24 12:14:04,604] Register - Step 08: Verify Register success message is displayed
+[2022-03-24 12:14:04,813] Login - Step 01: Navigate to Login Page
+[2022-03-24 12:14:10,167] Login - Step 02: Enter to Email Address Textbox with value is 'afc3227@mail.vn'
+[2022-03-24 12:14:10,324] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-24 12:14:10,487] Login - Step 04: Click to Login Button
+[2022-03-24 12:14:11,349] Login - Step 05: Verify 'My Account' link is displayed
+[2022-03-24 13:42:02,790] Register - Step 01: Navigate to 'Register' Page
+[2022-03-24 13:42:03,502] Register - Step 02: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-24 13:42:03,702] Register - Step 03: Enter to Lastname Textbox with value is 'FC'
+[2022-03-24 13:42:03,892] Register - Step 04: Enter to Email Address Textbox with value is 'afc4008@mail.vn'
+[2022-03-24 13:42:04,087] Register - Step 05: Enter to Password Textbox with value is '123456'
+[2022-03-24 13:42:04,280] Register - Step 06: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-24 13:42:04,459] Register - Step 07: Click to Register Button
+[2022-03-24 13:42:05,495] Register - Step 08: Verify Register success message is displayed
+[2022-03-24 13:42:05,591] Login - Step 01: Navigate to Login Page
+[2022-03-24 13:42:07,151] Login - Step 02: Enter to Email Address Textbox with value is 'afc4008@mail.vn'
+[2022-03-24 13:42:07,322] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-24 13:42:07,479] Login - Step 04: Click to Login Button
+[2022-03-24 13:42:08,404] Login - Step 05: Verify 'My Account' link is displayed

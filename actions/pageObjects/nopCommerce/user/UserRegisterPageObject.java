@@ -54,8 +54,8 @@ public class UserRegisterPageObject extends BasePage {
 	public void inputToLastnameTextbox(String lastName) {
 		waitForElementVisible(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
 		sendkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastName);
-		
 	}
+	
 
 	public void inputToEmailTextbox(String emailAddress) {
 		waitForElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
