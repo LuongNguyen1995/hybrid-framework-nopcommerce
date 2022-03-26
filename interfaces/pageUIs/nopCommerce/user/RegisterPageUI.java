@@ -18,5 +18,7 @@ public class RegisterPageUI {
 	public static final String SUCESS_MESSAGE ="xpath=//div[@class='result']";
 	
 	public static final String LOGOUT_LINK = "xpath=//a[@class='ico-logout']";
+	
+
 
 }

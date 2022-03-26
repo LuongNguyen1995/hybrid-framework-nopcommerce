@@ -8,9 +8,15 @@ public class BasePageUI {
 	
 	public static final String DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA = "xpath=//div[contains(@class,'account-navigation')]//a[text()='%s']";
 	
+	public static final String DYNAMIC_PAGE_HEADER = "xpath=//div[@class='header']//a[text()='%s']";
+	
+	public static final String DYNAMIC_RADIO_BY_TEXT = "xpath=//label[text()='%s']/preceding-sibling::input";
+	public static final String DYNAMIC_DROPDOWN_BY_NAME = "xpath=//select[@name='%s']";
+	public static final String DYNAMIC_BUTTON_BY_TEXT = "xpath=//button[text()='%s']";
 	
 	public static final String LOGOUT_LINK_AT_USER = "css=a[class='ico-logout']";
 	public static final String LOGOUT_LINK_AT_ADMIN = "xpath=//a[text()='Logout']";
 
+	public static final String DYNAMIC_TEXTBOX_BY_ID ="xpath=//input[@id='%s']";
 
 }

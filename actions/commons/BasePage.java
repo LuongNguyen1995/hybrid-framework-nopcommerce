@@ -28,6 +28,7 @@ import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointPageObject;
 import pageUIs.jQuery.uploadFile.BasePageJQueryUI;
 import pageUIs.nopCommerce.user.BasePageUI;
+import pageUIs.nopCommerce.user.RegisterPageUI;
 
 public class BasePage {
 	
@@ -593,5 +594,30 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
 		return PageGeneratorManager.getAdminLoginPage(driver);
 	}
+	
+	//Pattern Object
+	public void enterToTextboxByID(WebDriver driver, String textboxID, String value) {
+		waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+		sendkeyToElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxID);
+	}
+	
+	public void openHeaderPageByName (WebDriver driver, String textboxID) {
+		waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_HEADER, textboxID);
+		clickToElement(driver, BasePageUI.DYNAMIC_PAGE_HEADER, textboxID);
+	}
+	
+	public void clickToRadioButtonByText(WebDriver driver, String radioButtonID) {
+		waitForElementClickable(driver, BasePageUI.DYNAMIC_RADIO_BY_TEXT, radioButtonID);
+		clickToElement(driver, BasePageUI.DYNAMIC_RADIO_BY_TEXT, radioButtonID);
+	}
 
+	public void selectDropdownByName(WebDriver driver, String dropdownName, String itemText) {
+		selectItemInDefaultDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, itemText, dropdownName);
+	}
+	
+	public void clickToButtonByText(WebDriver driver, String buttonText) {
+		waitForElementClickable(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+		clickToElement(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+	}
+	
 }
