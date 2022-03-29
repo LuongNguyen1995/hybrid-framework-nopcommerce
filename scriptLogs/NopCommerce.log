@@ -271,3 +271,124 @@
 [2022-03-26 17:34:38,062] 
 [2022-03-26 18:12:15,876] OS name = windows 10
 [2022-03-26 18:12:15,877] 
+[2022-03-26 21:55:26,492] Register - Step 01: Navigate to 'Register' Page
+[2022-03-26 21:55:26,607] Login - Step 01: Navigate to Login Page
+[2022-03-26 21:55:26,618] OS name = windows 10
+[2022-03-26 21:55:26,618] Driver instance name = chromedriver: chrome on windows (3b3537cabbf9362cd027457457c4abaf)
+[2022-03-26 21:56:18,946] Register - Step 01: Navigate to 'Register' Page
+[2022-03-26 21:56:19,667] Register - Step 02: Click to 'Male' radio button
+[2022-03-26 21:56:19,803] Register - Step 03: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-26 21:56:19,985] Register - Step 04: Enter to Lastname Textbox with value is 'FC'
+[2022-03-26 21:56:20,167] Register - Step 05: Enter to Email Address Textbox with value is 'afc5089@mail.vn'
+[2022-03-26 21:56:20,363] Register - Step 06: Enter to Password Textbox with value is '123456'
+[2022-03-26 21:56:20,552] Register - Step 07: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-26 21:56:20,737] Register - Step 08: Select item in 'Date of Day' dropdown
+[2022-03-26 21:56:50,948] Login - Step 01: Navigate to Login Page
+[2022-03-26 21:56:51,649] Login - Step 02: Enter to Email Address Textbox with value is 'afc5089@mail.vn'
+[2022-03-26 21:56:51,840] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-26 21:56:52,016] Login - Step 04: Click to Login Button
+[2022-03-26 21:56:53,198] Login - Step 05: Verify 'My Account' link is displayed
+[2022-03-26 21:57:23,345] OS name = windows 10
+[2022-03-26 21:57:23,345] Driver instance name = chromedriver: chrome on windows (2a92b7eb9d9bf74af6d59f8f6f985b84)
+[2022-03-26 21:57:23,365] no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=99.0.4844.82)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-11PKG1U', ip: '192.168.45.105', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\Dell\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:56579}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 2a92b7eb9d9bf74af6d59f8f6f985b84
+[2022-03-26 21:58:38,852] Register - Step 01: Navigate to 'Register' Page
+[2022-03-26 21:58:39,572] Register - Step 02: Click to 'Male' radio button
+[2022-03-26 21:58:39,710] Register - Step 03: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-26 21:58:39,907] Register - Step 04: Enter to Lastname Textbox with value is 'FC'
+[2022-03-26 21:58:40,083] Register - Step 05: Enter to Email Address Textbox with value is 'afc5366@mail.vn'
+[2022-03-26 21:58:40,280] Register - Step 06: Enter to Password Textbox with value is '123456'
+[2022-03-26 21:58:40,465] Register - Step 07: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-26 21:58:40,645] Register - Step 08: Select item in 'Date of Day' dropdown
+[2022-03-26 21:58:40,771] Register - Step 09: Select item in 'Date of Month' dropdown
+[2022-03-26 21:58:40,896] Register - Step 10: Select item in 'Date of Year' dropdown
+[2022-03-26 21:58:41,020] Register - Step 11: Click to Register Button
+[2022-03-26 21:58:41,990] Register - Step 12: Verify Register success message is displayed
+[2022-03-26 21:58:42,182] Login - Step 01: Navigate to Login Page
+[2022-03-26 21:59:12,636] OS name = windows 10
+[2022-03-26 21:59:12,636] Driver instance name = chromedriver: chrome on windows (c984a92f330cfe6601135982c1d7a16f)
+[2022-03-26 21:59:12,659] no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=99.0.4844.82)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-11PKG1U', ip: '192.168.45.105', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\Dell\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:56661}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c984a92f330cfe6601135982c1d7a16f
+[2022-03-26 21:59:20,843] Register - Step 01: Navigate to 'Register' Page
+[2022-03-26 21:59:21,536] Register - Step 02: Click to 'Male' radio button
+[2022-03-26 21:59:21,674] Register - Step 03: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-26 21:59:21,882] Register - Step 04: Enter to Lastname Textbox with value is 'FC'
+[2022-03-26 21:59:22,068] Register - Step 05: Enter to Email Address Textbox with value is 'afc6239@mail.vn'
+[2022-03-26 21:59:22,304] Register - Step 06: Enter to Password Textbox with value is '123456'
+[2022-03-26 21:59:22,477] Register - Step 07: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-26 21:59:22,654] Register - Step 08: Select item in 'Date of Day' dropdown
+[2022-03-26 21:59:22,783] Register - Step 09: Select item in 'Date of Month' dropdown
+[2022-03-26 21:59:22,905] Register - Step 10: Select item in 'Date of Year' dropdown
+[2022-03-26 21:59:23,016] Register - Step 11: Click to Register Button
+[2022-03-26 21:59:24,037] Register - Step 12: Verify Register success message is displayed
+[2022-03-26 21:59:24,111] Register - Step 13: Click to Log out Link
+[2022-03-26 21:59:25,215] Login - Step 01: Navigate to Login Page
+[2022-03-26 21:59:25,865] Login - Step 02: Enter to Email Address Textbox with value is 'afc6239@mail.vn'
+[2022-03-26 21:59:26,024] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-26 21:59:26,186] Login - Step 04: Click to Login Button
+[2022-03-26 21:59:57,156] OS name = windows 10
+[2022-03-26 21:59:57,156] Driver instance name = chromedriver: chrome on windows (a9b191e9a227fb699d1d1704297621b3)
+[2022-03-26 22:02:20,207] Register - Step 01: Navigate to 'Register' Page
+[2022-03-26 22:02:20,880] Register - Step 02: Click to 'Male' radio button
+[2022-03-26 22:02:21,009] Register - Step 03: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-26 22:02:21,207] Register - Step 04: Enter to Lastname Textbox with value is 'FC'
+[2022-03-26 22:02:21,396] Register - Step 05: Enter to Email Address Textbox with value is 'afc1133@mail.vn'
+[2022-03-26 22:02:21,592] Register - Step 06: Enter to Password Textbox with value is '123456'
+[2022-03-26 22:02:21,769] Register - Step 07: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-26 22:02:21,943] Register - Step 08: Select item in 'Date of Day' dropdown
+[2022-03-26 22:02:22,069] Register - Step 09: Select item in 'Date of Month' dropdown
+[2022-03-26 22:02:22,195] Register - Step 10: Select item in 'Date of Year' dropdown
+[2022-03-26 22:02:22,307] Register - Step 11: Click to Register Button
+[2022-03-26 22:02:23,301] Register - Step 12: Verify Register success message is displayed
+[2022-03-26 22:02:23,379] Register - Step 13: Click to Log out Link
+[2022-03-26 22:02:24,453] Login - Step 01: Navigate to Login Page
+[2022-03-26 22:02:25,144] Login - Step 02: Enter to Email Address Textbox with value is 'afc1133@mail.vn'
+[2022-03-26 22:02:25,314] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-26 22:02:25,481] Login - Step 04: Click to Login Button
+[2022-03-26 22:02:26,379] Login - Step 05: Verify 'My Account' link is displayed
+[2022-03-26 22:02:26,515] OS name = windows 10
+[2022-03-26 22:02:26,516] Driver instance name = chromedriver: chrome on windows (17514a85a11365017b431521c93e40d3)
+[2022-03-26 22:02:57,450] Register - Step 01: Navigate to 'Register' Page
+[2022-03-26 22:02:58,142] Register - Step 02: Click to 'Male' radio button
+[2022-03-26 22:02:58,286] Register - Step 03: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-26 22:02:58,479] Register - Step 04: Enter to Lastname Textbox with value is 'FC'
+[2022-03-26 22:02:58,656] Register - Step 05: Enter to Email Address Textbox with value is 'afc7086@mail.vn'
+[2022-03-26 22:02:58,851] Register - Step 06: Enter to Password Textbox with value is '123456'
+[2022-03-26 22:02:59,025] Register - Step 07: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-26 22:02:59,187] Register - Step 08: Select item in 'Date of Day' dropdown
+[2022-03-26 22:02:59,319] Register - Step 09: Select item in 'Date of Month' dropdown
+[2022-03-26 22:02:59,438] Register - Step 10: Select item in 'Date of Year' dropdown
+[2022-03-26 22:02:59,550] Register - Step 11: Click to Register Button
+[2022-03-26 22:03:00,558] Register - Step 12: Verify Register success message is displayed
+[2022-03-26 22:03:00,635] Register - Step 13: Click to Log out Link
+[2022-03-26 22:03:01,880] Login - Step 01: Navigate to Login Page
+[2022-03-26 22:03:02,568] Login - Step 02: Enter to Email Address Textbox with value is 'afc7086@mail.vn'
+[2022-03-26 22:03:02,734] Login - Step 03: Enter to Password Textbox with value is '123456'
+[2022-03-26 22:03:02,904] Login - Step 04: Click to Login Button
+[2022-03-26 22:03:03,827] Login - Step 05: Verify 'My Account' link is displayed
+[2022-03-26 22:03:03,917] Login - Step 06: Navigate to 'My Account' page
+[2022-03-26 22:03:04,555] Login - Step 07: Verify 'Customer Infor' page
+[2022-03-26 22:03:04,650] OS name = windows 10
+[2022-03-26 22:03:04,651] Driver instance name = chromedriver: chrome on windows (34572ae1c8ef4da3c526dd6618883ecb)
+[2022-03-27 06:51:25,019] Pre-Condition - Step 01: Navigate to 'Register' Page
+[2022-03-27 06:51:25,749] Pre-Condition - Step 02: Enter to Firstname Textbox with value is 'Automation'
+[2022-03-27 06:51:25,960] Pre-Condition - Step 03: Enter to Lastname Textbox with value is 'FC'
+[2022-03-27 06:51:26,141] Pre-Condition - Step 04: Enter to Email Address Textbox with value is 'afc7578@mail.vn'
+[2022-03-27 06:51:26,370] Pre-Condition - Step 05: Enter to Password Textbox with value is '123456'
+[2022-03-27 06:51:26,561] Pre-Condition - Step 06: Enter to Confirm Password Textbox with value is '123456'
+[2022-03-27 06:51:26,755] Pre-Condition - Step 07: Click to Register Button
+[2022-03-27 06:51:27,761] Pre-Condition - Step 08: Verify Register success message is displayed
+[2022-03-27 06:51:28,124] OS name = windows 10
+[2022-03-27 06:51:28,125] Driver instance name = chromedriver: chrome on windows (6ad6d195325372d1ed0049936be6b201)
