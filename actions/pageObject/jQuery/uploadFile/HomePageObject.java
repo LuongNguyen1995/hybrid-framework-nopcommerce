@@ -30,7 +30,7 @@ public class HomePageObject extends BasePage{
 	}
 
 	public void clickToStartButton() {
-		List<WebElement> startButtons = getListWebElemnt(driver, HomePageUI.START_BUTTON);
+		List<WebElement> startButtons = getListWebElement(driver, HomePageUI.START_BUTTON);
 		for (WebElement startButton : startButtons) {
 			startButton.click();
 			sleepInSecond(2);

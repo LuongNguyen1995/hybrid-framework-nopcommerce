@@ -174,7 +174,7 @@ public class BasePage {
 		return driver.findElement(getByLocator(locatorType));
 	}
 	
-	public List<WebElement> getListWebElemnt(WebDriver driver, String locatorType) {
+	public List<WebElement> getListWebElement(WebDriver driver, String locatorType) {
 		return driver.findElements(getByLocator(locatorType));
 	}
 	
@@ -273,11 +273,11 @@ public class BasePage {
 	}
 	
 	public int getElementSize(WebDriver driver, String locatorType) {
-		return getListWebElemnt(driver,locatorType).size();
+		return getListWebElement(driver,locatorType).size();
 	}
 	
 	public int getElementSize(WebDriver driver, String locatorType, String... dynamicValue) {
-		return getListWebElemnt(driver,getDynamicXpath(locatorType, dynamicValue)).size();
+		return getListWebElement(driver,getDynamicXpath(locatorType, dynamicValue)).size();
 	}
 	
 	public void checkToDefaultCheckboxOrRadio(WebDriver driver, String locatorType) {
@@ -319,7 +319,7 @@ public class BasePage {
 	public boolean isElementUndisplayed(WebDriver driver, String locator) {
 		System.out.println("Start time : "+new Date().toString());
 		overrideImplicitTimeout(driver, shortTimeout);
-		List<WebElement> elements = getListWebElemnt(driver, locator);
+		List<WebElement> elements = getListWebElement(driver, locator);
 		overrideImplicitTimeout(driver, longTimeout);
 		if (elements.size()==0) {
 			return true;
@@ -529,12 +529,12 @@ public class BasePage {
 	
 	public void waitForAllElementInisible(WebDriver driver, String locatorType) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
-		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(getListWebElemnt(driver, locatorType)));
+		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(getListWebElement(driver, locatorType)));
 	}
 	
 	public void waitForAllElementInisible(WebDriver driver, String locatorType, String... dynamicValue) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
-		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(getListWebElemnt(driver, getDynamicXpath(locatorType, dynamicValue))));
+		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(getListWebElement(driver, getDynamicXpath(locatorType, dynamicValue))));
 	}
 	
 	public void waitForElementClickable(WebDriver driver, String locatorType) {
