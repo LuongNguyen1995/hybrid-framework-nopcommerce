@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.hrm.datatest.EmployeeData;
+
 import commons.BaseTest;
 import commons.GlobalConstants;
 import pageObjects.hrm.AddEmployeePO;
@@ -15,16 +17,16 @@ import pageObjects.hrm.EmployeeListPO;
 import pageObjects.hrm.LoginPO;
 import pageObjects.hrm.MyInfoPO;
 import pageObjects.hrm.PageGenerator;
-import utilities.DataUtil;
 
-public class Level_22_Fake_Data extends BaseTest{
+public class Level_23_Data_Test_4_Data_Driven extends BaseTest{
 	WebDriver driver;
 	LoginPO loginPage;
 	AddEmployeePO addEmployeePage;
 	DashboardPO dashboardPage;
 	EmployeeListPO employeeListPage;
 	MyInfoPO myInfoPage;
-	DataUtil fakeData;
+	EmployeeData employeeData;
+	
 	String employeeID, statusValue;
 	String adminUserName, adminPassword, empFirstname, empLastname, empUsername, empPassword, empFullname;
 	String editEmpFirstName, editEmpLastName, editEmpGender, editEmpMaritalStatus, editEmpNationality ;
@@ -40,19 +42,19 @@ public class Level_22_Fake_Data extends BaseTest{
 		log.info("Pre-Condition - Step 01: Open browser '"+ browserName +"' and navigate to '"+ appUrl +"'");
 		driver = getBrowserDriver(browserName, appUrl);
 		loginPage = PageGenerator.getLoginPage(driver);
-		fakeData = DataUtil.getData();
+		employeeData.getEmployee();
 		
 		statusValue = "Enabled";
 		adminUserName = "Admin";
 		adminPassword = "admin123";
 		
-		empFirstname = fakeData.getFirstName();
-		empLastname = fakeData.getLastName();
-		empFullname = empFirstname+ " "+ empLastname;
-		empUsername = fakeData.getUserName();
-		empPassword = fakeData.getPassword();
-		editEmpFirstName = fakeData.getEditFirstName();
-		editEmpLastName = fakeData.getEditLastName();
+		empFirstname = employeeData.getFirstname();
+		empLastname = employeeData.getLastname();
+		empFullname = employeeData.getFullname();
+		empUsername = employeeData.getFullname();
+		empPassword = employeeData.getPassword();
+//		editEmpFirstName = fakeData.getEditFirstName();
+//		editEmpLastName = fakeData.getEditLastName();
 		editEmpGender = "Male"; 
 		editEmpMaritalStatus = "Single"; 
 		editEmpNationality = "Vietnamese";
@@ -63,19 +65,19 @@ public class Level_22_Fake_Data extends BaseTest{
 		editEmpProvince = "Viet Nam";
 		editEmpZip = "10000";
 		editEmpCountry = "Viet Nam";
-		editEmpHomeTel = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpMobile = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpWorkTel = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpWorkMail = fakeData.getEmailAddress();
-		editEmpOtherMail = fakeData.getEmailAddress();
-		
-		editNameEmgContact = fakeData.getFirstName();
-		editRelationshipEmgContact = "Daddy";
-		editHomeTelEmgContact = "0965"+fakeData.getRandom6DegitNumber();
-		
-		editNameDependent = fakeData.getFirstName();
-		editRelationshipDependent = "Child";
-		editDOBDependent = "2022-01-03";
+//		editEmpHomeTel = fakeData.getPhoneNumber();
+//		editEmpMobile = fakeData.getPhoneNumber();
+//		editEmpWorkTel = fakeData.getPhoneNumber();
+//		editEmpWorkMail = fakeData.getEmailAddress();
+//		editEmpOtherMail = fakeData.getEmailAddress();
+//		
+//		editNameEmgContact = fakeData.getFirstName();
+//		editRelationshipEmgContact = "Daddy";
+//		editHomeTelEmgContact = fakeData.getPhoneNumber();
+//		
+//		editNameDependent = fakeData.getFirstName();
+//		editRelationshipDependent = "Child";
+//		editDOBDependent = "2022-01-03";
 		
 		log.info("Pre-Condition - Step 02: Login with Admin role");
 

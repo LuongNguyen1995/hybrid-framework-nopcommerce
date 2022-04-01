@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="HRM">
 	<parameter name="url" value="https://opensource-demo.orangehrmlive.com/" />
+	<parameter name="adminUserName" value="Admin" />
+	<parameter name="adminPassword" value="admin123" />
+	<parameter name="empFirstname" value="John" />
+	<parameter name="empLastname" value="Cena" />
+	<parameter name="empUsername" value="jonhcena2020" />
+	<parameter name="empPassword" value="Victory1995" />
+	<parameter name="statusValue" value="Enabled" />
+	<parameter name="empFullname" value="John Cena" />
 	
 <listeners>
 	<listener class-name="reportConfig.MethodListener" />
@@ -10,15 +18,15 @@
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.hrm.employee.Level_22_Fake_Data" />
+			<class name="com.hrm.employee.Level_23_Data_Test_2_TestNG_XML" />
 		</classes>
 	</test>
 	
-	<test name="Run on CHROME">
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="com.hrm.employee.Level_22_Fake_Data" />
-		</classes>
-	</test>
+<!-- 	<test name="Run on CHROME"> -->
+<!-- 		<parameter name="browser" value="chrome" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="com.hrm.employee.Level_22_Fake_Data" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 	
 </suite> 

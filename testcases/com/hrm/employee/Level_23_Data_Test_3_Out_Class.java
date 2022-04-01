@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.hrm.data.Employee;
+
 import commons.BaseTest;
 import commons.GlobalConstants;
 import pageObjects.hrm.AddEmployeePO;
@@ -17,14 +19,15 @@ import pageObjects.hrm.MyInfoPO;
 import pageObjects.hrm.PageGenerator;
 import utilities.DataUtil;
 
-public class Level_22_Fake_Data extends BaseTest{
+public class Level_23_Data_Test_3_Out_Class extends BaseTest{
 	WebDriver driver;
 	LoginPO loginPage;
 	AddEmployeePO addEmployeePage;
 	DashboardPO dashboardPage;
 	EmployeeListPO employeeListPage;
 	MyInfoPO myInfoPage;
-	DataUtil fakeData;
+	Employee employeeData;
+	
 	String employeeID, statusValue;
 	String adminUserName, adminPassword, empFirstname, empLastname, empUsername, empPassword, empFullname;
 	String editEmpFirstName, editEmpLastName, editEmpGender, editEmpMaritalStatus, editEmpNationality ;
@@ -40,19 +43,9 @@ public class Level_22_Fake_Data extends BaseTest{
 		log.info("Pre-Condition - Step 01: Open browser '"+ browserName +"' and navigate to '"+ appUrl +"'");
 		driver = getBrowserDriver(browserName, appUrl);
 		loginPage = PageGenerator.getLoginPage(driver);
-		fakeData = DataUtil.getData();
 		
 		statusValue = "Enabled";
-		adminUserName = "Admin";
-		adminPassword = "admin123";
-		
-		empFirstname = fakeData.getFirstName();
-		empLastname = fakeData.getLastName();
-		empFullname = empFirstname+ " "+ empLastname;
-		empUsername = fakeData.getUserName();
-		empPassword = fakeData.getPassword();
-		editEmpFirstName = fakeData.getEditFirstName();
-		editEmpLastName = fakeData.getEditLastName();
+
 		editEmpGender = "Male"; 
 		editEmpMaritalStatus = "Single"; 
 		editEmpNationality = "Vietnamese";
@@ -63,15 +56,15 @@ public class Level_22_Fake_Data extends BaseTest{
 		editEmpProvince = "Viet Nam";
 		editEmpZip = "10000";
 		editEmpCountry = "Viet Nam";
-		editEmpHomeTel = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpMobile = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpWorkTel = "0965"+fakeData.getRandom6DegitNumber();
+		editEmpHomeTel = fakeData.getPhoneNumber();
+		editEmpMobile = fakeData.getPhoneNumber();
+		editEmpWorkTel = fakeData.getPhoneNumber();
 		editEmpWorkMail = fakeData.getEmailAddress();
 		editEmpOtherMail = fakeData.getEmailAddress();
 		
 		editNameEmgContact = fakeData.getFirstName();
 		editRelationshipEmgContact = "Daddy";
-		editHomeTelEmgContact = "0965"+fakeData.getRandom6DegitNumber();
+		editHomeTelEmgContact = fakeData.getPhoneNumber();
 		
 		editNameDependent = fakeData.getFirstName();
 		editRelationshipDependent = "Child";
@@ -79,7 +72,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 		log.info("Pre-Condition - Step 02: Login with Admin role");
 
-		dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
+		dashboardPage = loginPage.loginToSystem(driver, Employee.Role.ADMIN_USERNAME, Employee.Role.ADMIN_PASSWORD);
 	}
 	
 	@Test 
@@ -93,10 +86,10 @@ public class Level_22_Fake_Data extends BaseTest{
 		addEmployeePage = PageGenerator.getAddEmployeePage(driver);
 		
 		log.info("Add_New_01 - Step 03: Enter valid infor to 'First Name' textbox");
-		addEmployeePage.enterToTextboxByID(driver, "firstName", empFirstname);
+		addEmployeePage.enterToTextboxByID(driver, "firstName", Employee.PersonalDetail.FRISTNAME);
 		
 		log.info("Add_New_01 - Step 04: Enter valid infor to 'Last Name' textbox");
-		addEmployeePage.enterToTextboxByID(driver, "lastName", empLastname);
+		addEmployeePage.enterToTextboxByID(driver, "lastName", Employee.PersonalDetail.LASTNAME);
 		
 		log.info("Add_New_01 - Step 05: Get value of 'Employee ID'");
 		employeeID = addEmployeePage.getTextboxValueByID(driver, "employeeId");
@@ -105,13 +98,13 @@ public class Level_22_Fake_Data extends BaseTest{
 		addEmployeePage.clickToCheckboxByLabel(driver, "Create Login Details");
 		
 		log.info("Add_New_01 - Step 07: Enter valid infor to 'User Name' textbox");
-		addEmployeePage.enterToTextboxByID(driver, "user_name", empUsername);
+		addEmployeePage.enterToTextboxByID(driver, "user_name", Employee.PersonalDetail.USERNAME);
 		
 		log.info("Add_New_01 - Step 08: Enter valid infor to 'Password' textbox");
-		addEmployeePage.enterToTextboxByID(driver, "user_password", empPassword);
+		addEmployeePage.enterToTextboxByID(driver, "user_password", Employee.PersonalDetail.PASSWORD);
 		
 		log.info("Add_New_01 - Step 09: Enter valid infor to 'Confirm Password' textbox");
-		addEmployeePage.enterToTextboxByID(driver, "re_password", empPassword);
+		addEmployeePage.enterToTextboxByID(driver, "re_password", Employee.PersonalDetail.PASSWORD);
 		
 		log.info("Add_New_01 - Step 10: Select '"+ statusValue +"' value in 'Status' dropdown");
 		addEmployeePage.selectItemInDropdownByID(driver, "status", statusValue);
@@ -126,7 +119,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 		log.info("Add_New_01 - Step 13: Enter valid infor to 'Employee Name' textbox");
 		verifyTrue(employeeListPage.isJQueryAjaxLoadedSuccess(driver));
-		employeeListPage.enterToTextboxByID(driver, "empsearch_employee_name_empName", empFullname);
+		employeeListPage.enterToTextboxByID(driver, "empsearch_employee_name_empName", Employee.PersonalDetail.FULLNAME);
 		verifyTrue(employeeListPage.isJQueryAjaxLoadedSuccess(driver));
 		
 		log.info("Add_New_01 - Step 14: Click to 'Search' button");
@@ -135,8 +128,8 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 		log.info("Add_New_01 - Step 15: Verify Employee Information displayed at 'Result Table'");
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Id", "1"), employeeID);
-		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "First (& Middle) Name", "1"), empFirstname);
-		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Last Name", "1"), empLastname);
+		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "First (& Middle) Name", "1"), Employee.PersonalDetail.FRISTNAME);
+		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Last Name", "1"), Employee.PersonalDetail.LASTNAME);
 	}
 	
 	@Test 
@@ -204,10 +197,10 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyFalse(myInfoPage.isFieldEnableByID(driver, "personal_DOB"));
 		
 		log.info("Personal_Details_03 - Step 09: Enter new value to 'Frist name' textbox");
-		myInfoPage.enterToTextboxByID(driver, "personal_txtEmpFirstName", editEmpFirstName);
+		myInfoPage.enterToTextboxByID(driver, "personal_txtEmpFirstName", Employee.ContactDetail.EDIT_FIRSTNAME);
 		
 		log.info("Personal_Details_03 - Step 10: Enter new value to 'Last name' textbox");
-		myInfoPage.enterToTextboxByID(driver, "personal_txtEmpLastName", editEmpLastName);
+		myInfoPage.enterToTextboxByID(driver, "personal_txtEmpLastName", Employee.ContactDetail.EDIT_LASTNAME);
 		
 		log.info("Personal_Details_03 - Step 11: Select new value to 'Gender' radio button");
 		myInfoPage.clickToRadioByLabel(driver, editEmpGender);

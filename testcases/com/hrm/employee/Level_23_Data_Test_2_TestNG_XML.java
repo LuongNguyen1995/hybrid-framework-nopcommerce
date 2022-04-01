@@ -17,7 +17,7 @@ import pageObjects.hrm.MyInfoPO;
 import pageObjects.hrm.PageGenerator;
 import utilities.DataUtil;
 
-public class Level_22_Fake_Data extends BaseTest{
+public class Level_23_Data_Test_2_TestNG_XML extends BaseTest{
 	WebDriver driver;
 	LoginPO loginPage;
 	AddEmployeePO addEmployeePage;
@@ -25,8 +25,8 @@ public class Level_22_Fake_Data extends BaseTest{
 	EmployeeListPO employeeListPage;
 	MyInfoPO myInfoPage;
 	DataUtil fakeData;
-	String employeeID, statusValue;
-	String adminUserName, adminPassword, empFirstname, empLastname, empUsername, empPassword, empFullname;
+	String employeeID;
+	//String adminUserName, adminPassword;
 	String editEmpFirstName, editEmpLastName, editEmpGender, editEmpMaritalStatus, editEmpNationality ;
 	String editEmpAddStr1, editEmpAddStr2, editEmpCity, editEmpProvince, editEmpZip, editEmpCountry, editEmpHomeTel, editEmpMobile, editEmpWorkTel, editEmpWorkMail, editEmpOtherMail;
 	String editNameEmgContact, editRelationshipEmgContact, editHomeTelEmgContact;
@@ -34,23 +34,23 @@ public class Level_22_Fake_Data extends BaseTest{
 	String avatarFilePath = GlobalConstants.UPLOAD_FILE + "Avatar.jpg";
 	
 	
-	@Parameters({"browser", "url"})
+	@Parameters({"browser", "url" , "adminUserName", "adminPassword"})
 	@BeforeClass
-	public void beforeClass(String browserName, String appUrl) {
+	public void beforeClass(String browserName, String appUrl, String adminUserName, String adminPassword) {
 		log.info("Pre-Condition - Step 01: Open browser '"+ browserName +"' and navigate to '"+ appUrl +"'");
 		driver = getBrowserDriver(browserName, appUrl);
 		loginPage = PageGenerator.getLoginPage(driver);
 		fakeData = DataUtil.getData();
 		
-		statusValue = "Enabled";
-		adminUserName = "Admin";
-		adminPassword = "admin123";
+//		statusValue = "Enabled";
+//		adminUserName = "Admin";
+//		adminPassword = "admin123";
 		
-		empFirstname = fakeData.getFirstName();
-		empLastname = fakeData.getLastName();
-		empFullname = empFirstname+ " "+ empLastname;
-		empUsername = fakeData.getUserName();
-		empPassword = fakeData.getPassword();
+//		empFirstname = fakeData.getFirstName();
+//		empLastname = fakeData.getLastName();
+//		empFullname = empFirstname+ " "+ empLastname;
+//		empUsername = fakeData.getUserName();
+//		empPassword = fakeData.getPassword();
 		editEmpFirstName = fakeData.getEditFirstName();
 		editEmpLastName = fakeData.getEditLastName();
 		editEmpGender = "Male"; 
@@ -63,15 +63,15 @@ public class Level_22_Fake_Data extends BaseTest{
 		editEmpProvince = "Viet Nam";
 		editEmpZip = "10000";
 		editEmpCountry = "Viet Nam";
-		editEmpHomeTel = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpMobile = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpWorkTel = "0965"+fakeData.getRandom6DegitNumber();
+		editEmpHomeTel = fakeData.getPhoneNumber();
+		editEmpMobile = fakeData.getPhoneNumber();
+		editEmpWorkTel = fakeData.getPhoneNumber();
 		editEmpWorkMail = fakeData.getEmailAddress();
 		editEmpOtherMail = fakeData.getEmailAddress();
 		
 		editNameEmgContact = fakeData.getFirstName();
 		editRelationshipEmgContact = "Daddy";
-		editHomeTelEmgContact = "0965"+fakeData.getRandom6DegitNumber();
+		editHomeTelEmgContact = fakeData.getPhoneNumber();
 		
 		editNameDependent = fakeData.getFirstName();
 		editRelationshipDependent = "Child";
@@ -82,8 +82,9 @@ public class Level_22_Fake_Data extends BaseTest{
 		dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
 	}
 	
+	@Parameters({"empFirstname", "empLastname", "empUsername","empPassword", "statusValue", "empFullname" })
 	@Test 
-	public void Employee_01_Add_New_Employee() { 
+	public void Employee_01_Add_New_Employee(String empFirstname, String empLastname, String empUsername, String empPassword, String statusValue, String empFullname) { 
 		log.info("Add_New_01 - Step 01: Open 'Employee List' Page");
 		dashboardPage.openSubMenuPage(driver, "PIM", "Employee List");
 		employeeListPage = PageGenerator.getEmployeeListPage(driver);
@@ -139,12 +140,12 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Last Name", "1"), empLastname);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_02_Upload_Avatar() { 
 		log.info("Upload_Avatar_01 - Step 01: Login with Employee role");
 		loginPage = employeeListPage.logoutToSystem(driver);
 		
-		dashboardPage = loginPage.loginToSystem(driver, empUsername, empPassword);
+		//dashboardPage = loginPage.loginToSystem(driver, empUsername, empPassword);
 		
 		log.info("Upload_Avatar_01 - Step 02: Open 'Personal Detail' Page");
 		dashboardPage.openMenuPage(driver, "My Info");
@@ -167,7 +168,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_03_Personal_Details() { 
 		log.info("Personal_Details_03 - Step 01: Open 'Personal Details' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Personal Details");
@@ -243,7 +244,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyEquals(myInfoPage.getTextboxValueByID(driver, "personal_txtEmployeeId"),employeeID);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_04_Contact_Details() { 
 		log.info("Contact_Details_04 - Step 01: Open 'Contact Details' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Contact Details");
@@ -337,7 +338,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyEquals(myInfoPage.getTextboxValueByID(driver, "contact_emp_oth_email"),editEmpOtherMail);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_05_Emergency_Details() { 
 		log.info("Emergency_Details_05 - Step 01: Open 'Emergency Contacts' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Emergency Contacts");
@@ -367,7 +368,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_06_Assigned_Dependents() { 
 		log.info("Assigned_Dependents_06 - Step 01: Open 'Dependent' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Dependents");

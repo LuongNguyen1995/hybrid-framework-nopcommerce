@@ -54,6 +54,10 @@ public class DataUtil {
 		return faker.finance().creditCard();
 	}
 	
+	public int getRandom6DegitNumber() {
+		return faker.number().numberBetween(100000, 999999);
+	}
+	
 	
 	
 }

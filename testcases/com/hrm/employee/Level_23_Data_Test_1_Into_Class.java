@@ -17,7 +17,7 @@ import pageObjects.hrm.MyInfoPO;
 import pageObjects.hrm.PageGenerator;
 import utilities.DataUtil;
 
-public class Level_22_Fake_Data extends BaseTest{
+public class Level_23_Data_Test_1_Into_Class extends BaseTest{
 	WebDriver driver;
 	LoginPO loginPage;
 	AddEmployeePO addEmployeePage;
@@ -63,15 +63,15 @@ public class Level_22_Fake_Data extends BaseTest{
 		editEmpProvince = "Viet Nam";
 		editEmpZip = "10000";
 		editEmpCountry = "Viet Nam";
-		editEmpHomeTel = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpMobile = "0965"+fakeData.getRandom6DegitNumber();
-		editEmpWorkTel = "0965"+fakeData.getRandom6DegitNumber();
+		editEmpHomeTel = fakeData.getPhoneNumber();
+		editEmpMobile = fakeData.getPhoneNumber();
+		editEmpWorkTel = fakeData.getPhoneNumber();
 		editEmpWorkMail = fakeData.getEmailAddress();
 		editEmpOtherMail = fakeData.getEmailAddress();
 		
 		editNameEmgContact = fakeData.getFirstName();
 		editRelationshipEmgContact = "Daddy";
-		editHomeTelEmgContact = "0965"+fakeData.getRandom6DegitNumber();
+		editHomeTelEmgContact = fakeData.getPhoneNumber();
 		
 		editNameDependent = fakeData.getFirstName();
 		editRelationshipDependent = "Child";
