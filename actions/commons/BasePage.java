@@ -161,12 +161,9 @@ public class BasePage {
 	//Nếu như truyền vào locator type là xpath = đúng
 	//Truyền vào locator Type # xpath = sai
 	public String getDynamicXpath(String locatorType, String... dynamicValue) {
-		System.out.println("Locator type before = " + locatorType);
 		if(locatorType.startsWith("xpath=")  || locatorType.startsWith("XPATH=") || locatorType.startsWith("Xpath=") || locatorType.startsWith("XPath=")) {
 			locatorType = String.format(locatorType, (Object[]) dynamicValue);
 		}
-		System.out.println("Values map to locator = " + dynamicValue);
-		System.out.println("Locator type after = " + locatorType);
 		return locatorType;
 	}
 	
@@ -179,11 +176,21 @@ public class BasePage {
 	}
 	
 	public void clickToElement(WebDriver driver, String locatorType){
-		getWebElement(driver, locatorType).click();
+		if (driver.toString().contains("internet explorer")) {
+			clickToElementByJS(driver, locatorType);
+			sleepInSecond(2);
+		} else {
+			getWebElement(driver, locatorType).click();
+		}
 	}
 	
 	public void clickToElement(WebDriver driver, String locatorType, String... dynamicValue){
-		getWebElement(driver, getDynamicXpath(locatorType, dynamicValue)).click();
+		if (driver.toString().contains("internet explorer")) {
+			clickToElementByJS(driver, locatorType, dynamicValue);
+			sleepInSecond(2);
+		} else {
+			getWebElement(driver, getDynamicXpath(locatorType, dynamicValue)).click();
+		}
 	}
 	
 	public void sendkeyToElement(WebDriver driver, String locatorType, String textValue) {
@@ -283,27 +290,41 @@ public class BasePage {
 	public void checkToDefaultCheckboxOrRadio(WebDriver driver, String locatorType) {
 		WebElement element = getWebElement(driver, locatorType);
 		if (!element.isSelected()) {
-			element.click();
+			if (driver.toString().contains("internet explorer")) {
+				clickToElementByJS(driver, locatorType);
+			} else {
+				element.click();
+			}
 		}
 	}
 	
 	public void checkToDefaultCheckboxOrRadio(WebDriver driver, String locatorType, String... dynamicValue) {
 		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValue));
 		if (!element.isSelected()) {
-			element.click();
+			if (driver.toString().contains("internet explorer")) {
+				clickToElementByJS(driver, getDynamicXpath(locatorType, dynamicValue));
+			} else {
+				element.click();
+			}
 		}
 	}
 	
 	public void uncheckToDefaultCheckboxRadio(WebDriver driver, String locatorType) {
 		WebElement element = getWebElement(driver, locatorType);
 		if (element.isSelected()) {
-			element.click();
+			if (driver.toString().contains("internet explorer")) {
+				clickToElementByJS(driver, locatorType);
+			} else {
+				element.click();
+			}
 		}
 	}
 	
 	public void uncheckToDefaultCheckboxRadio(WebDriver driver, String locatorType, String... dynamicValue) {
 		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValue));
-		if (element.isSelected()) {
+		if (driver.toString().contains("internet explorer")) {
+			clickToElementByJS(driver, getDynamicXpath(locatorType, dynamicValue));
+		} else {
 			element.click();
 		}
 	}
@@ -654,16 +675,30 @@ public class BasePage {
 		clickToElement(driver, BasePageHRMUI.MENU_BY_PAGE_NAME, pageName);
 		
 		isJQueryAjaxLoadedSuccess(driver);
+		if (driver.toString().contains("internet explorer")) {
+			sleepInSecond(3);
+		} 
 	}
 	//HRM - Sub Menu
 	public void openSubMenuPage(WebDriver driver, String pageName, String subMenuPageName) {
 		waitForElementClickable(driver, BasePageHRMUI.MENU_BY_PAGE_NAME, pageName);
-		clickToElement(driver,BasePageHRMUI.MENU_BY_PAGE_NAME, pageName);
+		if (driver.toString().contains("internet explorer")) {
+			openPageUrl(driver, getElementAttribute(driver, BasePageHRMUI.MENU_BY_PAGE_NAME, "href", pageName));
+		} else {
+			clickToElement(driver,BasePageHRMUI.MENU_BY_PAGE_NAME, pageName);
+		}
+		
 		
 		waitForElementClickable(driver,BasePageHRMUI.MENU_BY_PAGE_NAME, subMenuPageName);
+		if (driver.toString().contains("internet explorer")) {
+			openPageUrl(driver, getElementAttribute(driver, BasePageHRMUI.MENU_BY_PAGE_NAME, "href", subMenuPageName));
+		} else {
 		clickToElement(driver, BasePageHRMUI.MENU_BY_PAGE_NAME, subMenuPageName);
-		
+		}
 		isJQueryAjaxLoadedSuccess(driver);
+		if (driver.toString().contains("internet explorer")) {
+			sleepInSecond(3);
+		} 
 	}
 	//HRM - Child Sub Menu
 	public void openChildSubMenuPage(WebDriver driver, String pageName, String subMenuPageName, String childSubMenuPageName) {
@@ -677,6 +712,9 @@ public class BasePage {
 		clickToElement(driver, BasePageHRMUI.MENU_BY_PAGE_NAME, childSubMenuPageName);
 		
 		isJQueryAjaxLoadedSuccess(driver);
+		if (driver.toString().contains("internet explorer")) {
+			sleepInSecond(3);
+		} 
 	}
 	
 	/**
@@ -688,6 +726,9 @@ public class BasePage {
 	public void clickToButtonByID(WebDriver driver, String buttonIDName) {
 		waitForElementClickable(driver, BasePageHRMUI.BUTTON_BY_ID, buttonIDName);
 		clickToElement(driver, BasePageHRMUI.BUTTON_BY_ID, buttonIDName);
+		if (driver.toString().contains("internet explorer")) {
+			sleepInSecond(3);
+		} 
 	}
 	
 	/**
@@ -785,6 +826,9 @@ public class BasePage {
 		waitForElementVisible(driver, BasePageHRMUI.USER_LOGIN_TEXTBOX);
 		sendkeyToElement(driver, BasePageHRMUI.USER_LOGIN_TEXTBOX, userName);
 		sendkeyToElement(driver, BasePageHRMUI.PASSWORD_LOGIN_TEXTBOX, password);
+		if (driver.toString().contains("internet explorer")) {
+			sleepInSecond(3);
+		} 
 		clickToElement(driver, BasePageHRMUI.LOGIN_BUTTON);
 		return PageGenerator.getDashboardPage(driver);
 	}

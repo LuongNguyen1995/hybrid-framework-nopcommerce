@@ -80,6 +80,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		log.info("Pre-Condition - Step 02: Login with Admin role");
 
 		dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
+		showBrowserConsoleLog(driver);
 	}
 	
 	@Test 
@@ -87,10 +88,12 @@ public class Level_22_Fake_Data extends BaseTest{
 		log.info("Add_New_01 - Step 01: Open 'Employee List' Page");
 		dashboardPage.openSubMenuPage(driver, "PIM", "Employee List");
 		employeeListPage = PageGenerator.getEmployeeListPage(driver);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 02: Click to 'Add' button");
 		employeeListPage.clickToButtonByID(driver, "btnAdd");
 		addEmployeePage = PageGenerator.getAddEmployeePage(driver);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 03: Enter valid infor to 'First Name' textbox");
 		addEmployeePage.enterToTextboxByID(driver, "firstName", empFirstname);
@@ -103,6 +106,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 		log.info("Add_New_01 - Step 06: Click to 'Create Login Details' checkbox");
 		addEmployeePage.clickToCheckboxByLabel(driver, "Create Login Details");
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 07: Enter valid infor to 'User Name' textbox");
 		addEmployeePage.enterToTextboxByID(driver, "user_name", empUsername);
@@ -115,6 +119,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 		log.info("Add_New_01 - Step 10: Select '"+ statusValue +"' value in 'Status' dropdown");
 		addEmployeePage.selectItemInDropdownByID(driver, "status", statusValue);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 11: Click to 'Save' button");
 		addEmployeePage.clickToButtonByID(driver, "btnSave");
@@ -123,6 +128,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		log.info("Add_New_01 - Step 12: Open 'Employee List' Page");
 		dashboardPage.openSubMenuPage(driver, "PIM", "Employee List");
 		employeeListPage = PageGenerator.getEmployeeListPage(driver);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 13: Enter valid infor to 'Employee Name' textbox");
 		verifyTrue(employeeListPage.isJQueryAjaxLoadedSuccess(driver));
@@ -139,7 +145,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Last Name", "1"), empLastname);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_02_Upload_Avatar() { 
 		log.info("Upload_Avatar_01 - Step 01: Login with Employee role");
 		loginPage = employeeListPage.logoutToSystem(driver);
@@ -167,7 +173,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_03_Personal_Details() { 
 		log.info("Personal_Details_03 - Step 01: Open 'Personal Details' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Personal Details");
@@ -243,7 +249,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyEquals(myInfoPage.getTextboxValueByID(driver, "personal_txtEmployeeId"),employeeID);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_04_Contact_Details() { 
 		log.info("Contact_Details_04 - Step 01: Open 'Contact Details' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Contact Details");
@@ -337,7 +343,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyEquals(myInfoPage.getTextboxValueByID(driver, "contact_emp_oth_email"),editEmpOtherMail);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_05_Emergency_Details() { 
 		log.info("Emergency_Details_05 - Step 01: Open 'Emergency Contacts' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Emergency Contacts");
@@ -367,7 +373,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_06_Assigned_Dependents() { 
 		log.info("Assigned_Dependents_06 - Step 01: Open 'Dependent' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Dependents");
