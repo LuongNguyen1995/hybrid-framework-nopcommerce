@@ -56,17 +56,17 @@ public class Level_23_Data_Test_3_Out_Class extends BaseTest{
 		editEmpProvince = "Viet Nam";
 		editEmpZip = "10000";
 		editEmpCountry = "Viet Nam";
-		editEmpHomeTel = fakeData.getPhoneNumber();
-		editEmpMobile = fakeData.getPhoneNumber();
-		editEmpWorkTel = fakeData.getPhoneNumber();
-		editEmpWorkMail = fakeData.getEmailAddress();
-		editEmpOtherMail = fakeData.getEmailAddress();
-		
-		editNameEmgContact = fakeData.getFirstName();
-		editRelationshipEmgContact = "Daddy";
-		editHomeTelEmgContact = fakeData.getPhoneNumber();
-		
-		editNameDependent = fakeData.getFirstName();
+//		editEmpHomeTel = fakeData.getPhoneNumber();
+//		editEmpMobile = fakeData.getPhoneNumber();
+//		editEmpWorkTel = fakeData.getPhoneNumber();
+//		editEmpWorkMail = fakeData.getEmailAddress();
+//		editEmpOtherMail = fakeData.getEmailAddress();
+//		
+//		editNameEmgContact = fakeData.getFirstName();
+//		editRelationshipEmgContact = "Daddy";
+//		editHomeTelEmgContact = fakeData.getPhoneNumber();
+//		
+//		editNameDependent = fakeData.getFirstName();
 		editRelationshipDependent = "Child";
 		editDOBDependent = "2022-01-03";
 		
