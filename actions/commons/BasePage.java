@@ -175,6 +175,7 @@ public class BasePage {
 	}
 	
 	public void clickToElement(WebDriver driver, String locatorType){
+		highlightElement(driver, locatorType);
 		if (driver.toString().contains("internet explorer")) {
 			clickToElementByJS(driver, locatorType);
 			sleepInSecond(2);
@@ -184,6 +185,7 @@ public class BasePage {
 	}
 	
 	public void clickToElement(WebDriver driver, String locatorType, String... dynamicValue){
+		highlightElement(driver, locatorType, dynamicValue);
 		if (driver.toString().contains("internet explorer")) {
 			clickToElementByJS(driver, locatorType, dynamicValue);
 			sleepInSecond(2);
@@ -193,12 +195,14 @@ public class BasePage {
 	}
 	
 	public void sendkeyToElement(WebDriver driver, String locatorType, String textValue) {
+		highlightElement(driver, locatorType);
 		WebElement element = getWebElement(driver, locatorType);
 		element.clear();
 		element.sendKeys(textValue);
 	}
 	
 	public void sendkeyToElement(WebDriver driver, String locatorType, String textValue, String... dynamicValue) {
+		highlightElement(driver, locatorType, dynamicValue);
 		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValue));
 		element.clear();
 		element.sendKeys(textValue);
@@ -287,6 +291,7 @@ public class BasePage {
 	}
 	
 	public void checkToDefaultCheckboxOrRadio(WebDriver driver, String locatorType) {
+		highlightElement(driver, locatorType);
 		WebElement element = getWebElement(driver, locatorType);
 		if (!element.isSelected()) {
 			if (driver.toString().contains("internet explorer")) {
@@ -298,6 +303,7 @@ public class BasePage {
 	}
 	
 	public void checkToDefaultCheckboxOrRadio(WebDriver driver, String locatorType, String... dynamicValue) {
+		highlightElement(driver, locatorType, dynamicValue);
 		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValue));
 		if (!element.isSelected()) {
 			if (driver.toString().contains("internet explorer")) {
@@ -309,6 +315,7 @@ public class BasePage {
 	}
 	
 	public void uncheckToDefaultCheckboxRadio(WebDriver driver, String locatorType) {
+		highlightElement(driver, locatorType);
 		WebElement element = getWebElement(driver, locatorType);
 		if (element.isSelected()) {
 			if (driver.toString().contains("internet explorer")) {
@@ -320,6 +327,7 @@ public class BasePage {
 	}
 	
 	public void uncheckToDefaultCheckboxRadio(WebDriver driver, String locatorType, String... dynamicValue) {
+		highlightElement(driver, locatorType, dynamicValue);
 		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValue));
 		if (driver.toString().contains("internet explorer")) {
 			clickToElementByJS(driver, getDynamicXpath(locatorType, dynamicValue));
@@ -329,6 +337,7 @@ public class BasePage {
 	}
 	
 	public boolean isElementDisplayed(WebDriver driver, String locatorType) {
+		highlightElement(driver, locatorType);
 		try {
 			return getWebElement(driver, locatorType).isDisplayed();
 		} catch (NoSuchElementException e) {
@@ -407,13 +416,24 @@ public class BasePage {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	}
-
+	
 	public void highlightElement(WebDriver driver, String locatorType) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		WebElement element = getWebElement(driver, locatorType);
 		String originalStyle = element.getAttribute("style");
-		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 2px solid red; border-style: dashed;");
-		sleepInSecond(1);
+		String highlightStyle = "border: 3px solid red; border-style: dashed;";
+		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", highlightStyle);
+		//sleepInSecond(1);
+		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
+	}
+
+	public void highlightElement(WebDriver driver, String locatorType, String... dynamicValue) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValue));
+		String originalStyle = element.getAttribute("style");
+		String highlightStyle = "border: 3px solid red; border-style: dashed;";
+		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", highlightStyle);
+		//sleepInSecond(1);
 		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
 	}
 	

@@ -4,9 +4,13 @@
 
 	
 <listeners>
-	<listener class-name="reportConfig.MethodListener" />
 	<listener class-name="org.uncommons.reportng.HTMLReporter" />
 	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	<listener class-name="reportConfig.MethodListener" />
+	<listener class-name="reportConfig.ExtentTestListener" />
+	<listener class-name="reportConfig.ReportNGListener" />
+	<listener class-name="tryConfig.RetryListener" />
+	
 </listeners> 
 <!-- 	<test name="Run on FIREFOX"> -->
 <!-- 		<parameter name="browser" value="firefox" /> -->
@@ -15,8 +19,8 @@
 <!-- 		</classes> -->
 <!-- 	</test> -->
 	
-	<test name="Run on OPERA">
-		<parameter name="browser" value="opera" />
+	<test name="Run on CHROME">
+		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="com.hrm.employee.Level_22_Fake_Data" />
 		</classes>

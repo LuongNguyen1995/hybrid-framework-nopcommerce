@@ -20,6 +20,18 @@ public class AllureTestListener implements ITestListener {
 	public static byte[] saveScreenshotPNG(String testName, WebDriver driver) {
 		return (byte[]) ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
+	
+	// Text attachments for Allure
+	@Attachment(value = "Text attachment of {0}", type = "text/plain")
+	public static String saveTextLog(String message) {
+		return message;
+	}
+
+	// HTML attachments for Allure
+	@Attachment(value = "Value of {0}", type = "text/html")
+	public static String attachHtml(String html) {
+		return html;
+	}
 
 	@Override
 	public void onTestFailure(ITestResult iTestResult) {
