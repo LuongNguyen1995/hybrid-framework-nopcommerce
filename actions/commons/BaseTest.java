@@ -207,6 +207,9 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.get(appUrl);
 		
+		//Truyền qua getEnviromentUrl
+		//driver.get(getEnviromentUrl(appUrl));
+		
 		return driver;
 	}
 	
@@ -214,17 +217,17 @@ public class BaseTest {
 		return this.driver;
 	}
 	
-	protected String getEnviromentUrl(String serverName) {
+	private String getEnviromentUrl(String serverName) {
 		String envUrl = null;
 		EnviromentList enviroment = EnviromentList.valueOf(serverName.toUpperCase());
 		if (enviroment == EnviromentList.DEV ) {
-			envUrl = "https://demo.nopcommerce.com";
+			envUrl = "https://demo.guru99.com/v1/";
 		}else if (enviroment == EnviromentList.TESTING) {
-			envUrl = "https://admin-demo.nopcommerce.com";
+			envUrl = "https://demo.guru99.com/v2/";
 		}else if (enviroment == EnviromentList.STAGING) {
-			envUrl = "https://staging.orangehrmlive.com";
+			envUrl = "https://demo.guru99.com/v3/";
 		}else if (enviroment == EnviromentList.PRODUCTION) {
-			envUrl = "https://production.orangehrmlive.com";
+			envUrl = "https://demo.guru99.com/v4/";
 		}
 		return envUrl;
 	}

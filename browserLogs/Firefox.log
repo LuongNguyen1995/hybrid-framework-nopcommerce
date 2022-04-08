@@ -1,75 +1,13 @@
-1648886402574	geckodriver	INFO	Listening on 127.0.0.1:33607
-1648886403305	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofilemqK3IX"
-1648886403706	Marionette	INFO	Marionette enabled
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofilemqK3IX\\search.json.mozlz4", (void 0)))
-1648886406211	Marionette	INFO	Listening on port 52432
-1648886406475	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensourceJ-advaSecmroipt error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-.orangehrmlive.com"
-1648886416694	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
-TimedPromise/<@chrome://remote/content/marionette/sync.js:235:19
-TimedPromise@chrome://remote/content/marionette/sync.js:220:10
-interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
-webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
-send@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:81476
-ajax@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:77295
-k._evalUrl@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:79350
-Ie@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:48088
-append@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:49520
-html/<@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:50612
-_@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:31840
-html@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:50290
-success@https://opensource-demo.orangehrmlive.com/index.php/dashboard:1255:36
-c@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:27742
-fireWith@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:28487
-l@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:78789
-send/o/<@https://opensource-demo.orangehrmlive.com/webres_6246c84b228811.17785064/js/jquery/jquery-3.4.1.min.js:2:81117
-console.warn: LoginRecipes: "getRecipJaevsa:S cfrailplti ng back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous messageJa vfaoSrc:r"i pt "error: resource://grhtet/modules/Loginps://opensource-demo.orangehrmlivManagere.com"Par
-ent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlJiavvea.Sccroimp"t error: resource://gre/modules/LoginManagerPar
-ent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falJlinag back to a synchvronoaScript error: resouurce://gsre/ modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManagemre sissa gneul for:" "https://opensource-demo.orangehrmlive.com"l
+1649380927412	geckodriver	INFO	Listening on 127.0.0.1:22234
+1649380928135	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofileOHQaCY"
+1649380929009	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofileOHQaCY\\search.json.mozlz4", (void 0)))
+1649380932291	Marionette	INFO	Listening on port 49874
+1649380932335	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1649380936478	Marionette	INFO	Stopped listening on port 49874
 
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous mJeasvsaaSgcer ifpotr :e"r r"ohrt:t resposu:r/c/eo:p/e/ngsroeu/rmcoed-udleemso/Lo.goirnaMngehrmalnive.com"
-agerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling bJaack tvo a syanchSrcornous messagei pfto re:r"r o"rhttps://:o preenssource-demo.orangehrmliveource:.//gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-com"
-JavacSocript error: resource://gre/modules/LoginnManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-sole.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-console.warn: LoginRecipes: "getRecipes: falJlaivnagS cbraicpkt  to aerror: res osuyrncceh:r/o/ngre/modouluess /mLeosgisnaMgae fnagerPoraren:" "https://opensourct.jsm, line 136: Te-demypeEo.orrorrang: gRehrmlive.com"
-ecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "geJavaScript error: tresource://gre/modules/RLeocgiinManpes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-agerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous mJeasvsaaSgcer ifor:" "https://openpsource-demo.orangehrmlive.com"
-t error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManagerconso lies. nullwar
-nJavaSc:r iLpotg ierrnRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-or: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" J"ahvtatSpcsr:i/p/to peernrsoourcer-:d ermeos.oourracngehrmlive.com"
-e://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoJavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-ginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-console.warn: LoginRecipes: "getRecipes: falling back tJoa vaa Sscyrnicphtr error: resoonuorucse :m//gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-essage for:" "https://opensource-demo.orangehrmlive.com"
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getReJcaipveasS:c rfiapltl ienrgr obra:c kr etsoo uar csey:nchronous message for:" "https://opensource-demo.orangehrmlive.com"/
-/gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-console.warn: LoginRecipes: "getRecipes: falling JavaSbaccripk tt eorror: resource://gre/modules/LoginManagerParent.jsm, line 136: Typ aeError: gRecipeManager is null
- synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-console.warn: LoginRecipes: J"agveatSRcecipes: falling back to a synchronous messagreipt e for:rror: re"s "httource://gre/ps://opensource-demo.orangehrmlive.com"
-console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
-modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
-JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][PContentChild] Error: RunMessage(msgname=PContent::Reply_DiscardBrowsingContext) Channel closing: too late to send/recv, messages will be lost
+

@@ -9,7 +9,7 @@
 	<listener class-name="reportConfig.MethodListener" />
 	<listener class-name="reportConfig.ExtentTestListener" />
 	<listener class-name="reportConfig.ReportNGListener" />
-	<listener class-name="tryConfig.RetryListener" />
+<!-- 	<listener class-name="tryConfig.RetryListener" /> -->
 	
 </listeners> 
 <!-- 	<test name="Run on FIREFOX"> -->

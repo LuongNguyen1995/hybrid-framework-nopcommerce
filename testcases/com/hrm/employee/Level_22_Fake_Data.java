@@ -147,7 +147,7 @@ public class Level_22_Fake_Data extends BaseTest{
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "First (& Middle) Name", "1"), empFirstname);
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Last Name", "1"), empLastname);
 		
-		Assert.assertTrue(false);
+
 	}
 	
 	//@Test 
