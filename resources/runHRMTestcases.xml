@@ -22,7 +22,7 @@
 	<test name="Run on CHROME">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.hrm.employee.Level_22_Fake_Data" />
+			<class name="com.hrm.employee.Level_25_Database_UI" />
 		</classes>
 	</test>
 	
