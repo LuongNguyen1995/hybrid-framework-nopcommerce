@@ -2,6 +2,8 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,6 +24,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -123,6 +128,121 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.get(GlobalConstants.PORTAL_PAGE_URL);
 		
+		return driver;
+	}
+	
+	protected WebDriver getBrowserDriver(String browserName, String appUrl, String ipAddress, String portNumber) {
+		DesiredCapabilities capability = null;
+		if (browserName.equals("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			capability = DesiredCapabilities.firefox();
+			capability.setBrowserName("firefox");
+			capability.setPlatform(Platform.WINDOWS);
+			
+			FirefoxOptions options = new FirefoxOptions();
+			options.merge(capability);
+		} else if (browserName.equals("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			capability = DesiredCapabilities.chrome();
+			capability.setBrowserName("chrome");
+			capability.setPlatform(Platform.WINDOWS);
+			
+			ChromeOptions options = new ChromeOptions();
+			options.merge(capability);
+		}else if (browserName.equals("safari")) {
+			capability = DesiredCapabilities.safari();
+			capability.setBrowserName("safari");
+			capability.setJavascriptEnabled(true);
+			capability.setPlatform(Platform.MAC);
+		}  else if (browserName.equals("edge")) {
+			WebDriverManager.edgedriver().setup();
+			capability = DesiredCapabilities.edge();
+			capability.setBrowserName("edge");
+			capability.setPlatform(Platform.ANY);
+			capability.setJavascriptEnabled(true);
+		}else if (browserName.equals("ie")) {
+			WebDriverManager.iedriver().arch32().setup();
+			capability = DesiredCapabilities.internetExplorer();
+			capability.setBrowserName("internetexplorer");
+			capability.setPlatform(Platform.WINDOWS);
+			capability.setJavascriptEnabled(true);
+		} else {
+			throw new RuntimeException("Please input valid browser name value");
+		}
+		try {
+			driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/wd/hub", ipAddress, portNumber)), capability);
+		} catch(MalformedURLException e){
+			e.printStackTrace();
+		}
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(appUrl);
+		return driver;
+	}
+	
+	protected WebDriver getBrowserDriverBrowserstack(String browserName, String appUrl, String osName, String osVersion) {
+		DesiredCapabilities capability = new DesiredCapabilities() ;
+		capability.setCapability("os", osName);
+		capability.setCapability("os_version", osVersion);
+		capability.setCapability("browser", browserName);
+		capability.setCapability("browser_version", "lastest");
+		capability.setCapability("browserstack.debug", "true");
+		capability.setCapability("resolution", "1920x1080");
+		capability.setCapability("project", "Orange HRM");
+		capability.setCapability("name", "Run on "+ osName + " | "+ osVersion + " | " + browserName);
+		
+		try {
+			driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), capability);
+		} catch(MalformedURLException e){
+			e.printStackTrace();
+		}
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(appUrl);
+		return driver;
+	}
+	
+	protected WebDriver getBrowserDriverSaucelab(String appUrl, String osName, String browserName) {
+		DesiredCapabilities capability = new DesiredCapabilities() ;
+		capability.setCapability("platformName", osName);
+		capability.setCapability("browserName", browserName);
+		capability.setCapability("browserVersion", "lastest");
+		capability.setCapability("name", "Run on " + osName + " | " + browserName);
+		
+		Map<String, Object> sauceOptions = new HashMap<>();
+		if (osName.contains("Windows")) {
+			sauceOptions.put("screenResolution", "1920x1080");
+		} else {
+			sauceOptions.put("screenResolution", "1920x1440");
+		}
+		capability.setCapability("sauce:options", sauceOptions);
+		
+		try {
+			driver = new RemoteWebDriver(new URL(GlobalConstants.SAUCE_URL), capability);
+		} catch(MalformedURLException e){
+			e.printStackTrace();
+		}
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(appUrl);
+		return driver;
+	}
+	
+	protected WebDriver getBrowserDriverLambda(String appUrl, String osName, String browserName) {
+		DesiredCapabilities capability = new DesiredCapabilities() ;
+		capability.setCapability("platform", osName);
+		capability.setCapability("browserName", browserName);
+		capability.setCapability("version", "lastest");
+		capability.setCapability("video", true);
+		capability.setCapability("visual", true);
+		
+		capability.setCapability("resolution", "1920x1080");
+		capability.setCapability("name", "Run on " + osName + " | " + browserName);
+		
+		try {
+			driver = new RemoteWebDriver(new URL(GlobalConstants.LAMBDA_URL), capability);
+		} catch(MalformedURLException e){
+			e.printStackTrace();
+		}
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(appUrl);
 		return driver;
 	}
 	

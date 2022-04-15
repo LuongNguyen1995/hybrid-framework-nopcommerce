@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="HRM">
+	<parameter name="url" value="https://opensource-demo.orangehrmlive.com/" />
+
+	
+<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	<listener class-name="reportConfig.MethodListener" />
+	<listener class-name="reportConfig.ExtentTestListener" />
+	<listener class-name="reportConfig.ReportNGListener" />
+<!-- 	<listener class-name="tryConfig.RetryListener" /> -->
+	
+</listeners> 
+	<test name="Run on Firefox">
+		<parameter name="browser" value="Firefox" />
+		<parameter name="osName" value="macOS 11.00" />
+		<classes>
+			<class name="com.hrm.cloud.Level_22_Fake_Data_IV_Saucelab" />
+		</classes>
+	</test>
+	
+	<test name="Run on Chrome">
+		<parameter name="browser" value="Chrome" />
+		<parameter name="osName" value="Windows 10" />
+		<classes>
+			<class name="com.hrm.cloud.Level_22_Fake_Data_IV_Saucelab" />
+		</classes>
+	</test>
+	
+	
+</suite> 

@@ -31,4 +31,17 @@ public class GlobalConstants {
 	public static final String PORTAL_PAGE_LIVETECHPANDA_URL = "http://live.techpanda.org/";
 	public static final String ADMIN_PAGE_LIVETECHPANDA_URL = "http://live.techpanda.org/index.php/backendlogin/customer/";
 	public static final String JAVA_VERSION = System.getProperty("java.version");
+	
+	public static final String BROWSER_USERNAME = "automationfc1";
+	public static final String BROWSER_AUTOMATE_KEY = "UEEKVvr8xuyup8zw36i5";
+	public static final String BROWSER_STACK_URL = "https://" +BROWSER_USERNAME + ":" +  BROWSER_AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+	
+	public static final String SAUCE_USERNAME = "oauth-luong.epu.dtvt1-42bdf";
+	public static final String SAUCE_AUTOMATE_KEY = "8e5a87d9-50de-4cfd-8958-385499342240";
+	public static final String SAUCE_URL = "https://" + SAUCE_USERNAME + ":" + SAUCE_AUTOMATE_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
+	
+	public static final String LAMBDA_USERNAME = "luong.epu.dtvt1";
+	public static final String LAMBDA_ACCESS_KEY = "hbBg7C6PaDMdWkbesHnEW0TTlKMu97ft7LtTSBNYk2PfgTWbHq";
+	public static final String LAMBDA_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_ACCESS_KEY +  "@hub.lambdatest.com/wd/hub";
+	
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="HRM">
+	<parameter name="url" value="https://opensource-demo.orangehrmlive.com/" />
+
+	
+<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	<listener class-name="reportConfig.MethodListener" />
+	<listener class-name="reportConfig.ExtentTestListener" />
+	<listener class-name="reportConfig.ReportNGListener" />
+<!-- 	<listener class-name="tryConfig.RetryListener" /> -->
+	
+</listeners> 
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="Firefox" />
+		<parameter name="osName" value="Windows" />
+		<parameter name="osVersion" value="10" />
+		<classes>
+			<class name="com.hrm.cloud.Level_22_Fake_Data_III_Browserstack" />
+		</classes>
+	</test>
+	
+	<test name="Run on CHROME">
+		<parameter name="browser" value="Chrome" />
+		<parameter name="osName" value="OS X" />
+		<parameter name="osVersion" value="Big Sur" />
+		<classes>
+			<class name="com.hrm.cloud.Level_22_Fake_Data_III_Browserstack" />
+		</classes>
+	</test>
+	
+	
+</suite> 

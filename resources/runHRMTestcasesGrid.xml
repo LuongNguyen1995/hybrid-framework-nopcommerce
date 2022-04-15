@@ -12,17 +12,21 @@
 <!-- 	<listener class-name="tryConfig.RetryListener" /> -->
 	
 </listeners> 
-<!-- 	<test name="Run on FIREFOX"> -->
-<!-- 		<parameter name="browser" value="firefox" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="com.hrm.employee.Level_22_Fake_Data" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="firefox" />
+		<parameter name="ipAddress" value="192.168.1.10" />
+		<parameter name="portNumber" value="5555" />
+		<classes>
+			<class name="com.hrm.cloud.Level_22_Fake_Data_II_Grid" />
+		</classes>
+	</test>
 	
 	<test name="Run on CHROME">
 		<parameter name="browser" value="chrome" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="portNumber" value="6666" />
 		<classes>
-			<class name="com.hrm.employee.Level_25_Database_UI" />
+			<class name="com.hrm.cloud.Level_22_Fake_Data_II_Grid" />
 		</classes>
 	</test>
 	
