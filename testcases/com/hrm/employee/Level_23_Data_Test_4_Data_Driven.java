@@ -40,7 +40,7 @@ public class Level_23_Data_Test_4_Data_Driven extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
 		log.info("Pre-Condition - Step 01: Open browser '"+ browserName +"' and navigate to '"+ appUrl +"'");
-		driver = getBrowserDriver(browserName, appUrl);
+		driver = getBrowserDriverLocal(browserName, appUrl);
 		loginPage = PageGenerator.getLoginPage(driver);
 		employeeData.getEmployee();
 		

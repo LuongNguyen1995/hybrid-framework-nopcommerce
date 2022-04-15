@@ -26,7 +26,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		System.out.println("Run on "+browserName);
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		
 
 	}

@@ -1,9 +1,12 @@
-package com.hrm.employee;
+package com.hrm.cloud;
 
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -13,16 +16,19 @@ import pageObjects.hrm.AddEmployeePO;
 import pageObjects.hrm.DashboardPO;
 import pageObjects.hrm.EmployeeListPO;
 import pageObjects.hrm.LoginPO;
-import pageObjects.hrm.PageGenerator;
 import pageObjects.hrm.MyInfoPO;
+import pageObjects.hrm.PageGenerator;
+import retryConfig.RetryListener;
+import utilities.DataUtil;
 
-public class Level_19_Live_Coding extends BaseTest{
+public class Level_22_Fake_Data_VI_All extends BaseTest{
 	WebDriver driver;
 	LoginPO loginPage;
 	AddEmployeePO addEmployeePage;
 	DashboardPO dashboardPage;
 	EmployeeListPO employeeListPage;
 	MyInfoPO myInfoPage;
+	DataUtil fakeData;
 	String employeeID, statusValue;
 	String adminUserName, adminPassword, empFirstname, empLastname, empUsername, empPassword, empFullname;
 	String editEmpFirstName, editEmpLastName, editEmpGender, editEmpMaritalStatus, editEmpNationality ;
@@ -32,24 +38,24 @@ public class Level_19_Live_Coding extends BaseTest{
 	String avatarFilePath = GlobalConstants.UPLOAD_FILE + "Avatar.jpg";
 	
 	
-	@Parameters({"browser", "url"})
+	@Parameters({"envName", "serverName", "browser", "ipAddress", "portNumber", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName, String appUrl) {
-		log.info("Pre-Condition - Step 01: Open browser '"+ browserName +"' and navigate to '"+ appUrl +"'");
-		driver = getBrowserDriverLocal(browserName, appUrl);
+	public void beforeClass(@Optional("local")  String envName, @Optional("dev")String serverName,@Optional("Chrome") String browserName,@Optional("localhost") String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
+		driver = getBrowserDriver(envName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
 		loginPage = PageGenerator.getLoginPage(driver);
+		fakeData = DataUtil.getData();
 		
 		statusValue = "Enabled";
 		adminUserName = "Admin";
 		adminPassword = "admin123";
 		
-		empFirstname = "AutomationOK123456"; 
-		empLastname = "FCOK123456"; 
+		empFirstname = fakeData.getFirstName();
+		empLastname = fakeData.getLastName();
 		empFullname = empFirstname+ " "+ empLastname;
-		empUsername = "automationfcok1234567"; 
-		empPassword = "automation123ok1234567";
-		editEmpFirstName = "Luong"; 
-		editEmpLastName = "Nguyen"; 
+		empUsername = fakeData.getUserName();
+		empPassword = fakeData.getPassword();
+		editEmpFirstName = fakeData.getEditFirstName();
+		editEmpLastName = fakeData.getEditLastName();
 		editEmpGender = "Male"; 
 		editEmpMaritalStatus = "Single"; 
 		editEmpNationality = "Vietnamese";
@@ -60,23 +66,24 @@ public class Level_19_Live_Coding extends BaseTest{
 		editEmpProvince = "Viet Nam";
 		editEmpZip = "10000";
 		editEmpCountry = "Viet Nam";
-		editEmpHomeTel = "0987654321";
-		editEmpMobile = "0123456789";
-		editEmpWorkTel = "9999";
-		editEmpWorkMail = "luong2.nguyen111@lge.com";
-		editEmpOtherMail = "luong.epu.dtvt1111@gmail.com";
+		editEmpHomeTel = "0965"+fakeData.getRandom6DegitNumber();
+		editEmpMobile = "0965"+fakeData.getRandom6DegitNumber();
+		editEmpWorkTel = "0965"+fakeData.getRandom6DegitNumber();
+		editEmpWorkMail = fakeData.getEmailAddress();
+		editEmpOtherMail = fakeData.getEmailAddress();
 		
-		editNameEmgContact = "Sang";
+		editNameEmgContact = fakeData.getFirstName();
 		editRelationshipEmgContact = "Daddy";
-		editHomeTelEmgContact = "113";
+		editHomeTelEmgContact = "0965"+fakeData.getRandom6DegitNumber();
 		
-		editNameDependent = "Truong";
+		editNameDependent = fakeData.getFirstName();
 		editRelationshipDependent = "Child";
 		editDOBDependent = "2022-01-03";
 		
 		log.info("Pre-Condition - Step 02: Login with Admin role");
 
 		dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
+		showBrowserConsoleLog(driver);
 	}
 	
 	@Test 
@@ -84,10 +91,12 @@ public class Level_19_Live_Coding extends BaseTest{
 		log.info("Add_New_01 - Step 01: Open 'Employee List' Page");
 		dashboardPage.openSubMenuPage(driver, "PIM", "Employee List");
 		employeeListPage = PageGenerator.getEmployeeListPage(driver);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 02: Click to 'Add' button");
 		employeeListPage.clickToButtonByID(driver, "btnAdd");
 		addEmployeePage = PageGenerator.getAddEmployeePage(driver);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 03: Enter valid infor to 'First Name' textbox");
 		addEmployeePage.enterToTextboxByID(driver, "firstName", empFirstname);
@@ -100,6 +109,7 @@ public class Level_19_Live_Coding extends BaseTest{
 		
 		log.info("Add_New_01 - Step 06: Click to 'Create Login Details' checkbox");
 		addEmployeePage.clickToCheckboxByLabel(driver, "Create Login Details");
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 07: Enter valid infor to 'User Name' textbox");
 		addEmployeePage.enterToTextboxByID(driver, "user_name", empUsername);
@@ -112,6 +122,7 @@ public class Level_19_Live_Coding extends BaseTest{
 		
 		log.info("Add_New_01 - Step 10: Select '"+ statusValue +"' value in 'Status' dropdown");
 		addEmployeePage.selectItemInDropdownByID(driver, "status", statusValue);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 11: Click to 'Save' button");
 		addEmployeePage.clickToButtonByID(driver, "btnSave");
@@ -120,6 +131,7 @@ public class Level_19_Live_Coding extends BaseTest{
 		log.info("Add_New_01 - Step 12: Open 'Employee List' Page");
 		dashboardPage.openSubMenuPage(driver, "PIM", "Employee List");
 		employeeListPage = PageGenerator.getEmployeeListPage(driver);
+		showBrowserConsoleLog(driver);
 		
 		log.info("Add_New_01 - Step 13: Enter valid infor to 'Employee Name' textbox");
 		verifyTrue(employeeListPage.isJQueryAjaxLoadedSuccess(driver));
@@ -134,9 +146,11 @@ public class Level_19_Live_Coding extends BaseTest{
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Id", "1"), employeeID);
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "First (& Middle) Name", "1"), empFirstname);
 		verifyEquals(employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "resultTable", "Last Name", "1"), empLastname);
+		
+
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_02_Upload_Avatar() { 
 		log.info("Upload_Avatar_01 - Step 01: Login with Employee role");
 		loginPage = employeeListPage.logoutToSystem(driver);
@@ -164,7 +178,7 @@ public class Level_19_Live_Coding extends BaseTest{
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_03_Personal_Details() { 
 		log.info("Personal_Details_03 - Step 01: Open 'Personal Details' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Personal Details");
@@ -240,7 +254,7 @@ public class Level_19_Live_Coding extends BaseTest{
 		verifyEquals(myInfoPage.getTextboxValueByID(driver, "personal_txtEmployeeId"),employeeID);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_04_Contact_Details() { 
 		log.info("Contact_Details_04 - Step 01: Open 'Contact Details' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Contact Details");
@@ -334,7 +348,7 @@ public class Level_19_Live_Coding extends BaseTest{
 		verifyEquals(myInfoPage.getTextboxValueByID(driver, "contact_emp_oth_email"),editEmpOtherMail);
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_05_Emergency_Details() { 
 		log.info("Emergency_Details_05 - Step 01: Open 'Emergency Contacts' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Emergency Contacts");
@@ -364,7 +378,7 @@ public class Level_19_Live_Coding extends BaseTest{
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void Employee_06_Assigned_Dependents() { 
 		log.info("Assigned_Dependents_06 - Step 01: Open 'Dependent' tab at Side Bar");
 		myInfoPage.openTabAtSideBarByName("Dependents");

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="HRM">
-	<parameter name="url" value="https://opensource-demo.orangehrmlive.com/" />
-
+	<parameter name="envName" value="lambda" />
+	<parameter name="serverName" value="dev" />
+	<parameter name="ipAddress" value="" />
+	<parameter name="portNumber" value="" />
+	<parameter name="osVersion" value="10" />
 	
 <listeners>
 	<listener class-name="org.uncommons.reportng.HTMLReporter" />

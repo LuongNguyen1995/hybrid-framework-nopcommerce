@@ -33,7 +33,7 @@ public class Level_16_Share_Data_C extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		

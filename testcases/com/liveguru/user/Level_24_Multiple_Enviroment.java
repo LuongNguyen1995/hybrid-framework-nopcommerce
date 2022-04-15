@@ -20,7 +20,7 @@ public class Level_24_Multiple_Enviroment extends BaseTest{
 		
 		ConfigFactory.setProperty("env", appUrl);
 		enviroment = ConfigFactory.create(Enviroment.class);
-		driver = getBrowserDriver(browserName, enviroment.applicationUrl());
+		driver = getBrowserDriverLocal(browserName, enviroment.applicationUrl());
 		
 		System.out.println(enviroment.osName());
 		System.out.println(driver.getCurrentUrl());

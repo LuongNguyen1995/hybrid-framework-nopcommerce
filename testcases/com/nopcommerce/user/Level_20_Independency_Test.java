@@ -24,7 +24,7 @@ public class Level_20_Independency_Test extends BaseTest {
 	@BeforeMethod
 	public void beforeMethod(String browserName, String appUrl) {
 		System.out.println("Run on "+browserName);
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		
 		homePage = new UserHomePageObject(driver);
 		registerPage = new UserRegisterPageObject(driver);

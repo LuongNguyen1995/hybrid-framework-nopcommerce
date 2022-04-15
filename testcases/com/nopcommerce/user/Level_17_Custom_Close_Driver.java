@@ -30,7 +30,7 @@ public class Level_17_Custom_Close_Driver extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		System.out.println("Run on "+browserName);
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		//Pre-Condition

@@ -39,7 +39,7 @@ public class Level_10_DataTable_DataGrid_Excersice extends BaseTest{
 	@Parameters({"browser","url"})
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
-		driver = getBrowserDriver(browserName, appUrl);
+		driver = getBrowserDriverLocal(browserName, appUrl);
 		userHomePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Luong";

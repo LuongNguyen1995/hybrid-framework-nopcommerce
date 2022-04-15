@@ -31,6 +31,12 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 
+import factoryEnviroment.BrowserstackFactory;
+import factoryEnviroment.EnviromentList;
+import factoryEnviroment.GridFactory;
+import factoryEnviroment.LambdaFactory;
+import factoryEnviroment.LocalFactory;
+import factoryEnviroment.SaucelabFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import reportConfig.VerificationFailures;
 
@@ -48,7 +54,35 @@ public class BaseTest {
 		log = LogFactory.getLog(getClass());
 	}
 	
-	protected WebDriver getBrowserDriver(String browserName) {
+	protected WebDriver getBrowserDriver(String envName, String serverName, String browserName, String ipAddress, String portNumber, String osName, String osVersion) {
+		switch (envName) {
+		case "local":
+			driver = new LocalFactory(browserName).createDriver();
+			break;
+		case "grid":
+			driver = new GridFactory(browserName, ipAddress, portNumber).createDriver();
+			break;
+		case "browserStack":
+			driver = new BrowserstackFactory(browserName, osName, osVersion).createDriver();
+			break;
+		case "saucelab":
+			driver = new SaucelabFactory(osName, browserName).createDriver();
+			break;
+		case "lambda":
+			driver = new LambdaFactory(osName, browserName).createDriver();
+			break;
+
+		default:
+			driver = new LocalFactory(browserName).createDriver();
+			break;
+		}
+		
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(getEnviromentUrl(serverName));
+		return driver;
+	}
+	
+	protected WebDriver getBrowserDriverLocal(String browserName) {
 		if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			
@@ -131,7 +165,7 @@ public class BaseTest {
 		return driver;
 	}
 	
-	protected WebDriver getBrowserDriver(String browserName, String appUrl, String ipAddress, String portNumber) {
+	protected WebDriver getBrowserDriverGrid(String browserName, String appUrl, String ipAddress, String portNumber) {
 		DesiredCapabilities capability = null;
 		if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
@@ -246,7 +280,7 @@ public class BaseTest {
 		return driver;
 	}
 	
-	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
+	protected WebDriver getBrowserDriverLocal(String browserName, String appUrl) {
 		if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			
@@ -327,8 +361,7 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.get(appUrl);
 		
-		//Truyền qua getEnviromentUrl
-		//driver.get(getEnviromentUrl(appUrl));
+
 		
 		return driver;
 	}
@@ -341,13 +374,13 @@ public class BaseTest {
 		String envUrl = null;
 		EnviromentList enviroment = EnviromentList.valueOf(serverName.toUpperCase());
 		if (enviroment == EnviromentList.DEV ) {
-			envUrl = "https://demo.guru99.com/v1/";
+			envUrl = "https://opensource-demo.orangehrmlive.com/";
 		}else if (enviroment == EnviromentList.TESTING) {
-			envUrl = "https://demo.guru99.com/v2/";
+			envUrl = "https://opensource-demo.orangehrmlive.com/";
 		}else if (enviroment == EnviromentList.STAGING) {
-			envUrl = "https://demo.guru99.com/v3/";
+			envUrl = "https://opensource-demo.orangehrmlive.com/";
 		}else if (enviroment == EnviromentList.PRODUCTION) {
-			envUrl = "https://demo.guru99.com/v4/";
+			envUrl = "https://opensource-demo.orangehrmlive.com/";
 		}
 		return envUrl;
 	}

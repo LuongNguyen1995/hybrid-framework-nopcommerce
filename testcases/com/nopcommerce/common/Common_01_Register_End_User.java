@@ -22,7 +22,7 @@ public class Common_01_Register_End_User extends BaseTest{
 	@BeforeTest(description = "Create new common User for all Classes Test")
 	public void Register(String browserName) { 
 		
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		firstName = "Automation";

@@ -33,7 +33,7 @@ public class Level_07_Switch_Page extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		System.out.println("Run on "+browserName);
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		
 		firstName = "Automation";
 		lastName = "FC";

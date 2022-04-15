@@ -23,7 +23,7 @@ public class Level_21_Sort extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
 		System.out.println("Run on "+browserName);
-		driver = getBrowserDriver(browserName, appUrl);
+		driver = getBrowserDriverLocal(browserName, appUrl);
 		
 		loginPage = PageGeneratorManager.getLoginPage(driver);
 		loginPage.enterToUserNameTextbox("standard_user");
