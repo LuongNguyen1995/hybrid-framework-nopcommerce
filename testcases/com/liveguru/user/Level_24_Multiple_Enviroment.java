@@ -4,6 +4,7 @@ package com.liveguru.user;
 import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,14 +15,11 @@ public class Level_24_Multiple_Enviroment extends BaseTest{
 	
 	Enviroment enviroment;
 	
-	@Parameters({"browser", "url"})
+	@Parameters({"envName", "serverName", "browser", "ipAddress", "portNumber", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName, String appUrl) {
-		
-		ConfigFactory.setProperty("env", appUrl);
+	public void beforeClass(@Optional("local")  String envName, @Optional("dev")String serverName,@Optional("Chrome") String browserName,@Optional("localhost") String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
 		enviroment = ConfigFactory.create(Enviroment.class);
-		driver = getBrowserDriverLocal(browserName, enviroment.applicationUrl());
-		
+		driver = getBrowserDriver(envName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
 		System.out.println(enviroment.osName());
 		System.out.println(driver.getCurrentUrl());
 	}
@@ -82,6 +80,6 @@ public class Level_24_Multiple_Enviroment extends BaseTest{
 	
 	@AfterClass (alwaysRun= true)
 	public void afterClass() {
-		closeBrowserAndDriver();
+		closeBrowserAndDriver("local");
 	}
 }

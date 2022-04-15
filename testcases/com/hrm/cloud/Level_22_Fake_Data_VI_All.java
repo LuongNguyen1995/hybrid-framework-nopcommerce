@@ -449,6 +449,6 @@ public class Level_22_Fake_Data_VI_All extends BaseTest{
 	
 	@AfterClass (alwaysRun= true)
 	public void afterClass() {
-		closeBrowserAndDriver();
+		closeBrowserAndDriver("local");
 	}
 }

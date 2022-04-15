@@ -4,6 +4,7 @@ package com.hrm.employee;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -34,11 +35,10 @@ public class Level_23_Data_Test_2_TestNG_XML extends BaseTest{
 	String avatarFilePath = GlobalConstants.UPLOAD_FILE + "Avatar.jpg";
 	
 	
-	@Parameters({"browser", "url" , "adminUserName", "adminPassword"})
+	@Parameters({"envName", "serverName", "browser", "ipAddress", "portNumber", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName, String appUrl, String adminUserName, String adminPassword) {
-		log.info("Pre-Condition - Step 01: Open browser '"+ browserName +"' and navigate to '"+ appUrl +"'");
-		driver = getBrowserDriverLocal(browserName, appUrl);
+	public void beforeClass(@Optional("local")  String envName, @Optional("dev")String serverName,@Optional("Chrome") String browserName,@Optional("localhost") String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
+		driver = getBrowserDriver(envName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
 		loginPage = PageGenerator.getLoginPage(driver);
 		fakeData = DataUtil.getData();
 		
@@ -79,7 +79,7 @@ public class Level_23_Data_Test_2_TestNG_XML extends BaseTest{
 		
 		log.info("Pre-Condition - Step 02: Login with Admin role");
 
-		dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
+		//dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
 	}
 	
 	@Parameters({"empFirstname", "empLastname", "empUsername","empPassword", "statusValue", "empFullname" })
@@ -439,6 +439,6 @@ public class Level_23_Data_Test_2_TestNG_XML extends BaseTest{
 	
 	@AfterClass (alwaysRun= true)
 	public void afterClass() {
-		closeBrowserAndDriver();
+		closeBrowserAndDriver("local");
 	}
 }

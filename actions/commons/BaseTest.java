@@ -82,290 +82,6 @@ public class BaseTest {
 		return driver;
 	}
 	
-	protected WebDriver getBrowserDriverLocal(String browserName) {
-		if (browserName.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			
-			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH + File.separator +"browserLogs"+File.separator + "Firefox.log" );
-			driver = new FirefoxDriver();
-			
-		} else if (browserName.equals("h_firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			//Browser Option : Selenium 3.xx
-			FirefoxOptions options = new FirefoxOptions();
-			options.addArguments("--headless");
-			options.addArguments("window-size=1920x1080");
-			driver = new FirefoxDriver(options);
-			
-		} else if (browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			
-			ChromeOptions options = new ChromeOptions();
-			System.setProperty("webdriver.chrome.args", "--disable-logging");
-			System.setProperty("webdriver.chrome.silentOutput", "true");
-			options.setExperimentalOption("useAutomationExtension", false);
-			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-			options.addArguments("--disable-geolocation");
-			options.addArguments("--disable-notifications");
-			options.addArguments("--disable-infobars");
-			
-			Map<String, Object> prefs = new HashMap<String, Object>();
-			prefs.put("credentials_enable_service", false);
-			prefs.put("profile.password_manager_enabled", false);
-			options.setExperimentalOption("prefs", prefs);
-			
-			driver = new ChromeDriver(options);
-			
-		}else if (browserName.equals("safari")) {
-			driver = new SafariDriver();
-		}  
-		else if (browserName.equals("h_chrome")) {
-			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless");
-			options.addArguments("window-size=1920x1080");
-			driver = new ChromeDriver(options);
-			
-		} else if (browserName.equals("edge")) {
-			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-		}else if (browserName.equals("ie")) {
-			WebDriverManager.iedriver().arch32().setup();
-			driver = new InternetExplorerDriver();
-		}
-		else if (browserName.equals("opera")) {
-			WebDriverManager.operadriver().setup();
-			driver = new OperaDriver();
-		}else if (browserName.equals("coccoc")) {
-			//Cốc cốc browser trừ đi 5-6 ver ra chrome driver (recommend 6)
-			WebDriverManager.chromedriver().driverVersion("97.0.4692.71").setup();
-			ChromeOptions options = new ChromeOptions();
-			if (GlobalConstants.OS_NAME.startsWith("Windows")) {
-				options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
-			}else {
-				options.setBinary("...");
-			}
-			driver = new ChromeDriver(options);
-			
-		}else if (browserName.equals("brave")) {
-			//Brave browser ver nào thì dùng chrome driver ver đó
-			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
-			driver = new ChromeDriver(options);
-			
-		} else {
-			throw new RuntimeException("Browser name invalid.");
-		}
-		
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(GlobalConstants.PORTAL_PAGE_URL);
-		
-		return driver;
-	}
-	
-	protected WebDriver getBrowserDriverGrid(String browserName, String appUrl, String ipAddress, String portNumber) {
-		DesiredCapabilities capability = null;
-		if (browserName.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			capability = DesiredCapabilities.firefox();
-			capability.setBrowserName("firefox");
-			capability.setPlatform(Platform.WINDOWS);
-			
-			FirefoxOptions options = new FirefoxOptions();
-			options.merge(capability);
-		} else if (browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			capability = DesiredCapabilities.chrome();
-			capability.setBrowserName("chrome");
-			capability.setPlatform(Platform.WINDOWS);
-			
-			ChromeOptions options = new ChromeOptions();
-			options.merge(capability);
-		}else if (browserName.equals("safari")) {
-			capability = DesiredCapabilities.safari();
-			capability.setBrowserName("safari");
-			capability.setJavascriptEnabled(true);
-			capability.setPlatform(Platform.MAC);
-		}  else if (browserName.equals("edge")) {
-			WebDriverManager.edgedriver().setup();
-			capability = DesiredCapabilities.edge();
-			capability.setBrowserName("edge");
-			capability.setPlatform(Platform.ANY);
-			capability.setJavascriptEnabled(true);
-		}else if (browserName.equals("ie")) {
-			WebDriverManager.iedriver().arch32().setup();
-			capability = DesiredCapabilities.internetExplorer();
-			capability.setBrowserName("internetexplorer");
-			capability.setPlatform(Platform.WINDOWS);
-			capability.setJavascriptEnabled(true);
-		} else {
-			throw new RuntimeException("Please input valid browser name value");
-		}
-		try {
-			driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/wd/hub", ipAddress, portNumber)), capability);
-		} catch(MalformedURLException e){
-			e.printStackTrace();
-		}
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(appUrl);
-		return driver;
-	}
-	
-	protected WebDriver getBrowserDriverBrowserstack(String browserName, String appUrl, String osName, String osVersion) {
-		DesiredCapabilities capability = new DesiredCapabilities() ;
-		capability.setCapability("os", osName);
-		capability.setCapability("os_version", osVersion);
-		capability.setCapability("browser", browserName);
-		capability.setCapability("browser_version", "lastest");
-		capability.setCapability("browserstack.debug", "true");
-		capability.setCapability("resolution", "1920x1080");
-		capability.setCapability("project", "Orange HRM");
-		capability.setCapability("name", "Run on "+ osName + " | "+ osVersion + " | " + browserName);
-		
-		try {
-			driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), capability);
-		} catch(MalformedURLException e){
-			e.printStackTrace();
-		}
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(appUrl);
-		return driver;
-	}
-	
-	protected WebDriver getBrowserDriverSaucelab(String appUrl, String osName, String browserName) {
-		DesiredCapabilities capability = new DesiredCapabilities() ;
-		capability.setCapability("platformName", osName);
-		capability.setCapability("browserName", browserName);
-		capability.setCapability("browserVersion", "lastest");
-		capability.setCapability("name", "Run on " + osName + " | " + browserName);
-		
-		Map<String, Object> sauceOptions = new HashMap<>();
-		if (osName.contains("Windows")) {
-			sauceOptions.put("screenResolution", "1920x1080");
-		} else {
-			sauceOptions.put("screenResolution", "1920x1440");
-		}
-		capability.setCapability("sauce:options", sauceOptions);
-		
-		try {
-			driver = new RemoteWebDriver(new URL(GlobalConstants.SAUCE_URL), capability);
-		} catch(MalformedURLException e){
-			e.printStackTrace();
-		}
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(appUrl);
-		return driver;
-	}
-	
-	protected WebDriver getBrowserDriverLambda(String appUrl, String osName, String browserName) {
-		DesiredCapabilities capability = new DesiredCapabilities() ;
-		capability.setCapability("platform", osName);
-		capability.setCapability("browserName", browserName);
-		capability.setCapability("version", "lastest");
-		capability.setCapability("video", true);
-		capability.setCapability("visual", true);
-		
-		capability.setCapability("resolution", "1920x1080");
-		capability.setCapability("name", "Run on " + osName + " | " + browserName);
-		
-		try {
-			driver = new RemoteWebDriver(new URL(GlobalConstants.LAMBDA_URL), capability);
-		} catch(MalformedURLException e){
-			e.printStackTrace();
-		}
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(appUrl);
-		return driver;
-	}
-	
-	protected WebDriver getBrowserDriverLocal(String browserName, String appUrl) {
-		if (browserName.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			
-			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH + File.separator +"browserLogs"+File.separator + "Firefox.log" );
-			
-			driver = new FirefoxDriver();
-		} else if (browserName.equals("h_firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			//Browser Option : Selenium 3.xx
-			FirefoxOptions options = new FirefoxOptions();
-			options.addArguments("--headless");
-			options.addArguments("window-size=1920x1080");
-			driver = new FirefoxDriver(options);
-			
-		} else if (browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			
-			ChromeOptions options = new ChromeOptions();
-			System.setProperty("webdriver.chrome.args", "--disable-logging");
-			System.setProperty("webdriver.chrome.silentOutput", "true");
-			options.setExperimentalOption("useAutomationExtension", false);
-			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-			options.addArguments("--disable-geolocation");
-			options.addArguments("--disable-notifications");
-			options.addArguments("--disable-infobars");
-			
-			Map<String, Object> prefs = new HashMap<String, Object>();
-			prefs.put("credentials_enable_service", false);
-			prefs.put("profile.password_manager_enabled", false);
-			options.setExperimentalOption("prefs", prefs);
-			
-			driver = new ChromeDriver(options);
-		}else if (browserName.equals("safari")) {
-			driver = new SafariDriver();
-		} 
-		else if (browserName.equals("h_chrome")) {
-			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless");
-			options.addArguments("window-size=1920x1080");
-			driver = new ChromeDriver(options);
-			
-		} else if (browserName.equals("edge")) {
-			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-		} else if (browserName.equals("legacy")) {
-			driver = new EdgeDriver();
-		}else if (browserName.equals("opera")) {
-			WebDriverManager.operadriver().setup();
-			driver = new OperaDriver();
-		}else if (browserName.equals("ie")) {
-			WebDriverManager.iedriver().arch32().setup();
-			driver = new InternetExplorerDriver();
-		}
-		else if (browserName.equals("coccoc")) {
-			//Cốc cốc browser trừ đi 5-6 ver ra chrome driver (recommend 6)
-			WebDriverManager.chromedriver().driverVersion("97.0.4692.71").setup();
-			ChromeOptions options = new ChromeOptions();
-			if (GlobalConstants.OS_NAME.startsWith("Windows")) {
-				options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
-			}else {
-				options.setBinary("...");
-			}
-			driver = new ChromeDriver(options);
-			
-		}else if (browserName.equals("brave")) {
-			//Brave browser ver nào thì dùng chrome driver ver đó
-			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
-			driver = new ChromeDriver(options);
-			
-		} else {
-			throw new RuntimeException("Browser name invalid.");
-		}
-		
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(appUrl);
-		
-
-		
-		return driver;
-	}
-	
 	public WebDriver getDriverInstance() {
 		return this.driver;
 	}
@@ -449,63 +165,65 @@ public class BaseTest {
 		}
 	}
 	
-	protected void closeBrowserAndDriver() {
-		String cmd = "";
-		try {
-			String osName = System.getProperty("os.name").toLowerCase();
-			log.info("OS name = " + osName);
-
-			String driverInstanceName = driver.toString().toLowerCase();
-			log.info("Driver instance name = " + driverInstanceName);
-
-			if (driverInstanceName.contains("chrome")) {
-				if (osName.contains("window")) {
-					cmd = "taskkill /F /FI \"IMAGENAME eq chromedriver*\"";
-				} else {
-					cmd = "pkill chromedriver";
-				}
-			} else if (driverInstanceName.contains("internetexplorer")) {
-				if (osName.contains("window")) {
-					cmd = "taskkill /F /FI \"IMAGENAME eq IEDriverServer*\"";
-				}
-			} else if (driverInstanceName.contains("firefox")) {
-				if (osName.contains("windows")) {
-					cmd = "taskkill /F /FI \"IMAGENAME eq geckodriver*\"";
-				} else {
-					cmd = "pkill geckodriver";
-				}
-			} else if (driverInstanceName.contains("edge")) {
-				if (osName.contains("window")) {
-					cmd = "taskkill /F /FI \"IMAGENAME eq msedgedriver*\"";
-				} else {
-					cmd = "pkill msedgedriver";
-				}
-			} else if (driverInstanceName.contains("opera")) {
-				if (osName.contains("window")) {
-					cmd = "taskkill /F /FI \"IMAGENAME eq operadriver*\"";
-				} else {
-					cmd = "pkill operadriver";
-				}
-			} else if (driverInstanceName.contains("safari")) {
-				if (osName.contains("mac")) {
-					cmd = "pkill safaridriver";
-				}
-			}
-
-			if (driver != null) {
-				driver.manage().deleteAllCookies();
-				driver.quit();
-			}
-		} catch (Exception e) {
-			log.info(e.getMessage());
-		} finally {
+	protected void closeBrowserAndDriver(String envName) {
+		if (envName.equals("local") || envName.equals("grid") ) {
+			String cmd = "";
 			try {
-				Process process = Runtime.getRuntime().exec(cmd);
-				process.waitFor();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				String osName = System.getProperty("os.name").toLowerCase();
+				log.info("OS name = " + osName);
+
+				String driverInstanceName = driver.toString().toLowerCase();
+				log.info("Driver instance name = " + driverInstanceName);
+
+				if (driverInstanceName.contains("chrome")) {
+					if (osName.contains("window")) {
+						cmd = "taskkill /F /FI \"IMAGENAME eq chromedriver*\"";
+					} else {
+						cmd = "pkill chromedriver";
+					}
+				} else if (driverInstanceName.contains("internetexplorer")) {
+					if (osName.contains("window")) {
+						cmd = "taskkill /F /FI \"IMAGENAME eq IEDriverServer*\"";
+					}
+				} else if (driverInstanceName.contains("firefox")) {
+					if (osName.contains("windows")) {
+						cmd = "taskkill /F /FI \"IMAGENAME eq geckodriver*\"";
+					} else {
+						cmd = "pkill geckodriver";
+					}
+				} else if (driverInstanceName.contains("edge")) {
+					if (osName.contains("window")) {
+						cmd = "taskkill /F /FI \"IMAGENAME eq msedgedriver*\"";
+					} else {
+						cmd = "pkill msedgedriver";
+					}
+				} else if (driverInstanceName.contains("opera")) {
+					if (osName.contains("window")) {
+						cmd = "taskkill /F /FI \"IMAGENAME eq operadriver*\"";
+					} else {
+						cmd = "pkill operadriver";
+					}
+				} else if (driverInstanceName.contains("safari")) {
+					if (osName.contains("mac")) {
+						cmd = "pkill safaridriver";
+					}
+				}
+
+				if (driver != null) {
+					driver.manage().deleteAllCookies();
+					driver.quit();
+				}
+			} catch (Exception e) {
+				log.info(e.getMessage());
+			} finally {
+				try {
+					Process process = Runtime.getRuntime().exec(cmd);
+					process.waitFor();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

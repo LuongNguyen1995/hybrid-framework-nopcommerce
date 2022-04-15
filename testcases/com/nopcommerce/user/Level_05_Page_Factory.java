@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -26,10 +27,10 @@ public class Level_05_Page_Factory extends BaseTest {
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
 	
-	@Parameters("browser")
+	@Parameters({"envName", "serverName", "browser", "ipAddress", "portNumber", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriverLocal(browserName);
+	public void beforeClass(@Optional("local")  String envName, @Optional("dev")String serverName,@Optional("Chrome") String browserName,@Optional("localhost") String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
+		driver = getBrowserDriver(envName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
 		homePage = new HomePageObject(driver);
 		firstName = "Automation";
 		lastName = "FC";

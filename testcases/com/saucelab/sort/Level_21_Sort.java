@@ -4,6 +4,7 @@ package com.saucelab.sort;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -17,13 +18,10 @@ public class Level_21_Sort extends BaseTest{
 	LoginPageObject loginPage;
 	InventoryPageObject inventoryPage;
 	
-	
-	
-	@Parameters({"browser", "url"})
+	@Parameters({"envName", "serverName", "browser", "ipAddress", "portNumber", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName, String appUrl) {
-		System.out.println("Run on "+browserName);
-		driver = getBrowserDriverLocal(browserName, appUrl);
+	public void beforeClass(@Optional("local")  String envName, @Optional("dev")String serverName,@Optional("Chrome") String browserName,@Optional("localhost") String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
+		driver = getBrowserDriver(envName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
 		
 		loginPage = PageGeneratorManager.getLoginPage(driver);
 		loginPage.enterToUserNameTextbox("standard_user");
@@ -62,6 +60,6 @@ public class Level_21_Sort extends BaseTest{
 	
 	@AfterClass (alwaysRun= true)
 	public void afterClass() {
-		closeBrowserAndDriver();
+		closeBrowserAndDriver("local");
 	}
 }

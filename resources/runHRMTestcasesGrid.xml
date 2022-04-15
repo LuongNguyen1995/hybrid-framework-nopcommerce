@@ -19,7 +19,7 @@
 		<parameter name="ipAddress" value="192.168.1.10" />
 		<parameter name="portNumber" value="5555" />
 		<classes>
-			<class name="com.hrm.cloud.Level_22_Fake_Data_II_Grid" />
+			<class name="com.hrm.cloud.Level_22_Fake_Data_VI_All" />
 		</classes>
 	</test>
 	
@@ -28,7 +28,7 @@
 		<parameter name="ipAddress" value="192.168.1.11" />
 		<parameter name="portNumber" value="6666" />
 		<classes>
-			<class name="com.hrm.cloud.Level_22_Fake_Data_II_Grid" />
+			<class name="com.hrm.cloud.Level_22_Fake_Data_VI_All" />
 		</classes>
 	</test>
 	

@@ -20,7 +20,7 @@
 		<parameter name="osName" value="Windows" />
 		<parameter name="osVersion" value="10" />
 		<classes>
-			<class name="com.hrm.cloud.Level_22_Fake_Data_III_Browserstack" />
+			<class name="com.hrm.cloud.Level_22_Fake_Data_VI_All" />
 		</classes>
 	</test>
 	
@@ -29,7 +29,7 @@
 		<parameter name="osName" value="OS X" />
 		<parameter name="osVersion" value="Big Sur" />
 		<classes>
-			<class name="com.hrm.cloud.Level_22_Fake_Data_III_Browserstack" />
+			<class name="com.hrm.cloud.Level_22_Fake_Data_VI_All" />
 		</classes>
 	</test>
 	
