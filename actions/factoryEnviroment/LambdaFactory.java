@@ -24,7 +24,7 @@ public class LambdaFactory {
 		DesiredCapabilities capability = new DesiredCapabilities() ;
 		capability.setCapability("platform", osName);
 		capability.setCapability("browserName", browserName);
-		capability.setCapability("version", "lastest");
+		capability.setCapability("version", "latest");
 		capability.setCapability("video", true);
 		capability.setCapability("visual", true);
 		

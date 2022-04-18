@@ -1,13 +1,43 @@
-1649380927412	geckodriver	INFO	Listening on 127.0.0.1:22234
-1649380928135	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofileOHQaCY"
-1649380929009	Marionette	INFO	Marionette enabled
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofileOHQaCY\\search.json.mozlz4", (void 0)))
-1649380932291	Marionette	INFO	Listening on port 49874
-1649380932335	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-1649380936478	Marionette	INFO	Stopped listening on port 49874
-
-###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
-
-
-###!!! [Child][PContentChild] Error: RunMessage(msgname=PContent::Reply_DiscardBrowsingContext) Channel closing: too late to send/recv, messages will be lost
-
+1650280026426	geckodriver	INFO	Listening on 127.0.0.1:41529
+1650280027077	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofileXy577Z"
+1650280028168	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Dell\\AppData\\Local\\Temp\\rust_mozprofileXy577Z\\search.json.mozlz4", (void 0)))
+1650280031819	Marionette	INFO	Listening on port 55507
+Read port: 55507
+1650280031869	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
+console.warn: LoginRecipes: "getRecipes: falling back toJavaScri pat  seyrror: resource://gre/modules/LoginManagerPnchronous messaargeen tf.ojrs:m",  "lhitnteps://opens ource-demo.orangehrmlive.com"
+136: TypeError: gRecipeManager is null
+1650280040641	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.js:235:19
+TimedPromise@chrome://remote/content/marionette/sync.js:220:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
+send@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:81476
+ajax@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:77295
+k._evalUrl@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:79350
+Ie@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:48088
+append@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:49520
+html/<@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:50612
+_@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:31840
+html@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:50290
+success@https://opensource-demo.orangehrmlive.com/index.php/dashboard:1255:36
+c@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:27742
+fireWith@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:28487
+l@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:78789
+send/o/<@https://opensource-demo.orangehrmlive.com/webres_625d2f943855e9.85984833/js/jquery/jquery-3.4.1.min.js:2:81117
+console.warn: LoginRecipes: JavaScript error: resource://gre/modul"es/LoginManagerParengetRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
+t.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demoJavaScript error: resource:/./gre/modoules/LoginManagerrParent.jsm, liane 136: TypeErnror: gRecipeManager is null
+gehrmlive.com"
+console.warn: LoginReJavcipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
+aScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginReciJpes: "getRecipes: fallianvga Sbcarcikp tt o a synchronous message for:" "https:error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+//opensource-demo.orangehrmlive.com"
+console.warn: LoginRecipes: "getRJeacviapSecsr:i fpt aelrlrionrg:  braecsko utroc ea: /s/ynchgrroen/omuosd umessage for:" "https://opensource-demo.orangehrmlive.com"
+les/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://opensource-demo.orangehrmlive.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipesJavaScript er:r ofra:l lriensg back to oau rce:s/y/gre/modnuclherso/nLoougsi nmMeasnagerPsaargeen tf.ojrs:m",  "lhitnteps://opensource-demo.orangehrmlive.com"
+ 136: TypeError: gRecipeManager is null
+1650280052929	Marionette	INFO	Stopped listening on port 55507

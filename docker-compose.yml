@@ -7,7 +7,7 @@ services:
       - "4444:4444"
 
   chrome:
-    image: selenium/node-chrome-debug
+    image: selenium/node-chrome-debug:3.141.59
     ports:
     -"15900:5900"
     depends_on:
@@ -21,7 +21,7 @@ services:
       - SCREEN_HEIGHT=1080
 
   firefox:
-    image: selenium/node-firefox-debug
+    image: selenium/node-firefox-debug:3.141.59
     ports:
     -"16900:5900"
     depends_on:

@@ -17,12 +17,12 @@
 <!-- 	<listener class-name="tryConfig.RetryListener" /> -->
 	
 </listeners> 
-<!-- 	<test name="Run on FIREFOX"> -->
-<!-- 		<parameter name="browser" value="firefox" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="com.hrm.employee.Level_22_Fake_Data" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.hrm.employee.Level_22_Fake_Data" />
+		</classes>
+	</test>
 	
 	<test name="Run on CHROME">
 		<parameter name="browser" value="chrome" />

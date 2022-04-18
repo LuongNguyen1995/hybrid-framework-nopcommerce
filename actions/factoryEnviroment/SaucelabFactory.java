@@ -25,7 +25,7 @@ public class SaucelabFactory {
 		DesiredCapabilities capability = new DesiredCapabilities() ;
 		capability.setCapability("platformName", osName);
 		capability.setCapability("browserName", browserName);
-		capability.setCapability("browserVersion", "lastest");
+		capability.setCapability("browserVersion", "latest");
 		capability.setCapability("name", "Run on " + osName + " | " + browserName);
 		
 		Map<String, Object> sauceOptions = new HashMap<>();

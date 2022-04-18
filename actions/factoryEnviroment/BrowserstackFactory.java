@@ -25,7 +25,7 @@ public class BrowserstackFactory {
 		capability.setCapability("os", osName);
 		capability.setCapability("os_version", osVersion);
 		capability.setCapability("browser", browserName);
-		capability.setCapability("browser_version", "lastest");
+		capability.setCapability("browser_version", "latest");
 		capability.setCapability("browserstack.debug", "true");
 		capability.setCapability("resolution", "1920x1080");
 		capability.setCapability("project", "Orange HRM");
