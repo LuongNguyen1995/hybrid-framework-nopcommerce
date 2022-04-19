@@ -14,7 +14,7 @@ public class CoccocDriverManager implements BrowserFactory{
 		//Cốc cốc browser trừ đi 5-6 ver ra chrome driver (recommend 6)
 		WebDriverManager.chromedriver().driverVersion("97.0.4692.71").setup();
 		ChromeOptions options = new ChromeOptions();
-		if (GlobalConstants.OS_NAME.startsWith("Windows")) {
+		if (GlobalConstants.getGlobalConstants().getOsName().startsWith("Windows")) {
 			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
 		}else {
 			options.setBinary("...");

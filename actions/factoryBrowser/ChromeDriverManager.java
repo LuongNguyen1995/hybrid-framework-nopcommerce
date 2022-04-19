@@ -30,7 +30,7 @@ public class ChromeDriverManager implements BrowserFactory{
 		prefs.put("credentials_enable_service", false);
 		prefs.put("profile.password_manager_enabled", false);
 		prefs.put("profile.default_content_settings.popups", 0);
-		prefs.put("download.default_directory", GlobalConstants.DOWNLOAD_FILE);
+		prefs.put("download.default_directory", GlobalConstants.getGlobalConstants().getDownloadFile());
 		options.setExperimentalOption("prefs", prefs);
 		
 		//Chạy chế độ ẩn danh

@@ -72,7 +72,7 @@ public class Level_10_DataTable_DataGrid_Excersice extends BaseTest{
 	
 	@Test
 	public void Step_02_Verify_Account_At_Admin_Site() {
-		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_PAGE_LIVETECHPANDA_URL);
+		userHomePage.openPageUrl(driver, GlobalConstants.getGlobalConstants().getAdminPageLivetechpandaUrl());
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
 		//Login
@@ -91,7 +91,7 @@ public class Level_10_DataTable_DataGrid_Excersice extends BaseTest{
 		adminDashboardPage.clickToSelectRowByEmail(emailAddress);
 		adminDashboardPage.clickToDeleteRowSelected();
 		adminDashboardPage.sleepInSecond(2);
-		adminDashboardPage.openPageUrl(driver, GlobalConstants.PORTAL_PAGE_LIVETECHPANDA_URL);
+		adminDashboardPage.openPageUrl(driver, GlobalConstants.getGlobalConstants().getPortalPageLivetechpandaUrl());
 		userHomePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		userLoginPage = userHomePage.clickToLogin();

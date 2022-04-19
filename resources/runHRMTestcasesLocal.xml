@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="HRM">
+<suite name="HRM" parallel ="false" thread-count="2">
 	<parameter name="envName" value="local" />
 	<parameter name="serverName" value="dev" />
 	<parameter name="ipAddress" value="" />
@@ -20,7 +20,7 @@
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.hrm.employee.Level_22_Fake_Data" />
+			<class name="com.hrm.cloud.Level_22_Fake_Data_VI_All" />
 		</classes>
 	</test>
 	

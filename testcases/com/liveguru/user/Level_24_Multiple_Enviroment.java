@@ -2,6 +2,7 @@ package com.liveguru.user;
 
 
 import org.aeonbits.owner.ConfigFactory;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
@@ -14,7 +15,7 @@ import enviromentConfig.Enviroment;
 public class Level_24_Multiple_Enviroment extends BaseTest{
 	
 	Enviroment enviroment;
-	
+	WebDriver driver;
 	@Parameters({"envName", "serverName", "browser", "ipAddress", "portNumber", "osName", "osVersion"})
 	@BeforeClass
 	public void beforeClass(@Optional("local")  String envName, @Optional("dev")String serverName,@Optional("Chrome") String browserName,@Optional("localhost") String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {

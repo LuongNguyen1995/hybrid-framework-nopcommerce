@@ -37,8 +37,8 @@ import pageUIs.nopCommerce.user.RegisterPageUI;
 
 public class BasePage {
 	
-	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
-	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
+	private long longTimeout = GlobalConstants.getGlobalConstants().getLongTimeout();
+	private long shortTimeout = GlobalConstants.getGlobalConstants().getShortTimeout();
 	
 	public static BasePage getBasePageObject() {
 		return new BasePage();
@@ -588,7 +588,7 @@ public class BasePage {
 	}
 	
 	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
-		String filePath = GlobalConstants.UPLOAD_FILE;
+		String filePath = GlobalConstants.getGlobalConstants().getUploadFile();
 		String fullFileName = "";
 		
 		for (String file : fileNames) {
@@ -838,7 +838,7 @@ public class BasePage {
 		
 		waitForElementClickable(driver, BasePageHRMUI.LOGOUT_LINK);
 		clickToElement(driver, BasePageHRMUI.LOGOUT_LINK);
-		return PageGenerator.getLoginPage(driver);
+		return PageGenerator.getPageGenerator().getLoginPage(driver);
 	}
 	
 	public DashboardPO loginToSystem(WebDriver driver, String userName, String password) {
@@ -849,7 +849,7 @@ public class BasePage {
 			sleepInSecond(3);
 		} 
 		clickToElement(driver, BasePageHRMUI.LOGIN_BUTTON);
-		return PageGenerator.getDashboardPage(driver);
+		return PageGenerator.getPageGenerator().getDashboardPage(driver);
 	}
 	
 	public void uploadImage(WebDriver driver, String filePath) {

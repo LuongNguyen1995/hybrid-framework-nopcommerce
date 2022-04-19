@@ -2,31 +2,15 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -37,12 +21,12 @@ import factoryEnviroment.GridFactory;
 import factoryEnviroment.LambdaFactory;
 import factoryEnviroment.LocalFactory;
 import factoryEnviroment.SaucelabFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import reportConfig.VerificationFailures;
+import utilities.PropertiesConfig;
 
 public class BaseTest {
 	private String projectPath = System.getProperty("user.dir");
-	protected WebDriver driver;
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	protected final Log log;
 	
 	@BeforeSuite
@@ -57,33 +41,34 @@ public class BaseTest {
 	protected WebDriver getBrowserDriver(String envName, String serverName, String browserName, String ipAddress, String portNumber, String osName, String osVersion) {
 		switch (envName) {
 		case "local":
-			driver = new LocalFactory(browserName).createDriver();
+			driver.set(new LocalFactory(browserName).createDriver());
 			break;
 		case "grid":
-			driver = new GridFactory(browserName, ipAddress, portNumber).createDriver();
+			driver.set(new GridFactory(browserName, ipAddress, portNumber).createDriver());
 			break;
 		case "browserStack":
-			driver = new BrowserstackFactory(browserName, osName, osVersion).createDriver();
+			driver.set(new BrowserstackFactory(browserName, osName, osVersion).createDriver());
 			break;
 		case "saucelab":
-			driver = new SaucelabFactory(osName, browserName).createDriver();
+			driver.set(new SaucelabFactory(osName, browserName).createDriver());
 			break;
 		case "lambda":
-			driver = new LambdaFactory(osName, browserName).createDriver();
+			driver.set(new LambdaFactory(osName, browserName).createDriver());
 			break;
 
 		default:
-			driver = new LocalFactory(browserName).createDriver();
+			driver.set(new LocalFactory(browserName).createDriver());
 			break;
 		}
 		
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(getEnviromentUrl(serverName));
-		return driver;
+		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getLongTimeout(), TimeUnit.SECONDS);
+		//driver.get().manage().timeouts().implicitlyWait(PropertiesConfig.getFileConfigReader().getLongTimeout(), TimeUnit.SECONDS);
+		driver.get().get(getEnviromentUrl(serverName));
+		return driver.get();
 	}
 	
 	public WebDriver getDriverInstance() {
-		return this.driver;
+		return this.driver.get();
 	}
 	
 	private String getEnviromentUrl(String serverName) {
@@ -152,7 +137,7 @@ public class BaseTest {
 	
 	public void deleteAllureReport() {
 		try {
-			String pathFolderDownload = GlobalConstants.PROJECT_PATH + "/allure-json";
+			String pathFolderDownload = GlobalConstants.getGlobalConstants().getProjectPath() + "/allure-json";
 			File file = new File(pathFolderDownload);
 			File[] listOfFiles = file.listFiles();
 			for (int i = 0; i < listOfFiles.length; i++) {
@@ -172,7 +157,7 @@ public class BaseTest {
 				String osName = System.getProperty("os.name").toLowerCase();
 				log.info("OS name = " + osName);
 
-				String driverInstanceName = driver.toString().toLowerCase();
+				String driverInstanceName = driver.get().toString().toLowerCase();
 				log.info("Driver instance name = " + driverInstanceName);
 
 				if (driverInstanceName.contains("chrome")) {
@@ -210,8 +195,10 @@ public class BaseTest {
 				}
 
 				if (driver != null) {
-					driver.manage().deleteAllCookies();
-					driver.quit();
+					driver.get().manage().deleteAllCookies();
+					driver.get().quit();
+					
+					driver.remove();
 				}
 			} catch (Exception e) {
 				log.info(e.getMessage());

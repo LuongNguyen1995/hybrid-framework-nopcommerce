@@ -35,14 +35,14 @@ public class Level_23_Data_Test_3_Out_Class extends BaseTest{
 	String editEmpAddStr1, editEmpAddStr2, editEmpCity, editEmpProvince, editEmpZip, editEmpCountry, editEmpHomeTel, editEmpMobile, editEmpWorkTel, editEmpWorkMail, editEmpOtherMail;
 	String editNameEmgContact, editRelationshipEmgContact, editHomeTelEmgContact;
 	String editNameDependent, editRelationshipDependent, editDOBDependent;
-	String avatarFilePath = GlobalConstants.UPLOAD_FILE + "Avatar.jpg";
+	String avatarFilePath = GlobalConstants.getGlobalConstants().getUploadFile() + "Avatar.jpg";
 	
 	
 	@Parameters({"envName", "serverName", "browser", "ipAddress", "portNumber", "osName", "osVersion"})
 	@BeforeClass
 	public void beforeClass(@Optional("local")  String envName, @Optional("dev")String serverName,@Optional("Chrome") String browserName,@Optional("localhost") String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
 		driver = getBrowserDriver(envName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
-		loginPage = PageGenerator.getLoginPage(driver);
+		loginPage = PageGenerator.getPageGenerator().getLoginPage(driver);
 		
 		statusValue = "Enabled";
 
@@ -79,11 +79,11 @@ public class Level_23_Data_Test_3_Out_Class extends BaseTest{
 	public void Employee_01_Add_New_Employee() { 
 		log.info("Add_New_01 - Step 01: Open 'Employee List' Page");
 		dashboardPage.openSubMenuPage(driver, "PIM", "Employee List");
-		employeeListPage = PageGenerator.getEmployeeListPage(driver);
+		employeeListPage = PageGenerator.getPageGenerator().getEmployeeListPage(driver);
 		
 		log.info("Add_New_01 - Step 02: Click to 'Add' button");
 		employeeListPage.clickToButtonByID(driver, "btnAdd");
-		addEmployeePage = PageGenerator.getAddEmployeePage(driver);
+		addEmployeePage = PageGenerator.getPageGenerator().getAddEmployeePage(driver);
 		
 		log.info("Add_New_01 - Step 03: Enter valid infor to 'First Name' textbox");
 		addEmployeePage.enterToTextboxByID(driver, "firstName", Employee.PersonalDetail.FRISTNAME);
@@ -111,11 +111,11 @@ public class Level_23_Data_Test_3_Out_Class extends BaseTest{
 		
 		log.info("Add_New_01 - Step 11: Click to 'Save' button");
 		addEmployeePage.clickToButtonByID(driver, "btnSave");
-		myInfoPage = PageGenerator.getMyInfoPage(driver);
+		myInfoPage = PageGenerator.getPageGenerator().getMyInfoPage(driver);
 		
 		log.info("Add_New_01 - Step 12: Open 'Employee List' Page");
 		dashboardPage.openSubMenuPage(driver, "PIM", "Employee List");
-		employeeListPage = PageGenerator.getEmployeeListPage(driver);
+		employeeListPage = PageGenerator.getPageGenerator().getEmployeeListPage(driver);
 		
 		log.info("Add_New_01 - Step 13: Enter valid infor to 'Employee Name' textbox");
 		verifyTrue(employeeListPage.isJQueryAjaxLoadedSuccess(driver));
@@ -141,7 +141,7 @@ public class Level_23_Data_Test_3_Out_Class extends BaseTest{
 		
 		log.info("Upload_Avatar_01 - Step 02: Open 'Personal Detail' Page");
 		dashboardPage.openMenuPage(driver, "My Info");
-		myInfoPage = PageGenerator.getMyInfoPage(driver);
+		myInfoPage = PageGenerator.getPageGenerator().getMyInfoPage(driver);
 		
 		log.info("Upload_Avatar_01 - Step 03: Click to 'Change Photo' image");
 		myInfoPage.clickToChangePhotoImage();
